@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using Packt.Shared;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,6 +17,8 @@ namespace TravelAgency
         public MainWindow()
         {
             InitializeComponent();
+
+            tb.Text = ProjectConstants.DatabaseProvider;
         }
     }
 }
