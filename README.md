@@ -1,10 +1,10 @@
 ﻿# Автоматизация работы Турагенства
 
-![Static Badge](https://img.shields.io/badge/OkulusDev-Oxygen-Oxygen)
+![Static Badge](https://img.shields.io/badge/Yamemik-travel-agency-travel-agency)
 ![GitHub top language](https://img.shields.io/github/languages/top/Yamemik/travel-agency)
-![GitHub](https://img.shields.io/github/license/OkulusDev/Oxygen)
-![GitHub Repo stars](https://img.shields.io/github/stars/OkulusDev/Oxygen)
-![GitHub issues](https://img.shields.io/github/issues/OkulusDev/Oxygen)
+![GitHub](https://img.shields.io/github/license/Yamemik/travel-agency)
+![GitHub Repo stars](https://img.shields.io/github/stars/Yamemik/travel-agency)
+![GitHub issues](https://img.shields.io/github/issues/Yamemik/travel-agency)
 
 ## Описание
 ### Функции:
