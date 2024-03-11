@@ -1,6 +1,6 @@
 ﻿# Автоматизация работы Турагенства
 
-![Static Badge](https://img.shields.io/badge/Yamemik-travel_agency)
+![Static Badge](https://img.shields.io/badge/Yamemik-travel_agency-travel_agency)
 ![GitHub top language](https://img.shields.io/github/languages/top/Yamemik/travel-agency)
 ![GitHub](https://img.shields.io/github/license/Yamemik/travel-agency)
 ![GitHub Repo stars](https://img.shields.io/github/stars/Yamemik/travel-agency)
