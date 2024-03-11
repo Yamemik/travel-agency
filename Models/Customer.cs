@@ -6,46 +6,32 @@ using Microsoft.EntityFrameworkCore;
 
 namespace TravelAgency;
 
-[Index("City", Name = "City")]
-[Index("CompanyName", Name = "CompanyNameCustomers")]
-[Index("PostalCode", Name = "PostalCodeCustomers")]
-[Index("Region", Name = "Region")]
+[Table("customers")]
 public partial class Customer
 {
     [Key]
-    [Column(TypeName = "nchar (5)")]
-    public string CustomerId { get; set; } = null!;
+    [Column("id")]
+    public int Id { get; set; }
 
-    [Column(TypeName = "nvarchar (40)")]
-    public string CompanyName { get; set; } = null!;
+    [Column("surname", TypeName = "varchar (255)")]
+    public string Surname { get; set; } = null!;
 
-    [Column(TypeName = "nvarchar (30)")]
-    public string? ContactName { get; set; }
+    [Column("name", TypeName = "varchar (255)")]
+    public string Name { get; set; } = null!;
 
-    [Column(TypeName = "nvarchar (30)")]
-    public string? ContactTitle { get; set; }
+    [Column("patronymic", TypeName = "varchar (255)")]
+    public string? Patronymic { get; set; }
 
-    [Column(TypeName = "nvarchar (60)")]
-    public string? Address { get; set; }
+    [Column("gender", TypeName = "varchar (35)")]
+    public string Gender { get; set; } = null!;
 
-    [Column(TypeName = "nvarchar (15)")]
-    public string? City { get; set; }
+    [Column("passport_number", TypeName = "varchar (35)")]
+    public string PassportNumber { get; set; } = null!;
 
-    [Column(TypeName = "nvarchar (15)")]
-    public string? Region { get; set; }
+    [Column("birth_date", TypeName = "date")]
+    public DateOnly BirthDate { get; set; }
 
-    [Column(TypeName = "nvarchar (10)")]
-    public string? PostalCode { get; set; }
-
-    [Column(TypeName = "nvarchar (15)")]
-    public string? Country { get; set; }
-
-    [Column(TypeName = "nvarchar (24)")]
-    public string? Phone { get; set; }
-
-    [Column(TypeName = "nvarchar (24)")]
-    public string? Fax { get; set; }
-
-    [InverseProperty("Customer")]
-    public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
+    [ForeignKey("CustomerId")]
+    [InverseProperty("Customers")]
+    public virtual ICollection<Contract> Contracts { get; set; } = new List<Contract>();
 }

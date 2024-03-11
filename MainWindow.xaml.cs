@@ -25,22 +25,23 @@ namespace TravelAgency
 
         static void QueryingCategories()
         {
-            using (TravelDBContext db = new())
-            {
-                // запрос на получение всех категорий и связанных с ними продуктов
-                IQueryable<Category>? categories = db.Categories?
-                .Include(c => c.Products);
-                if (categories is null)
-                {
-                    MessageBox.Show("Категории не найдены.");
-                    return;
-                }
-                // выполнение запроса и перечисление результатов
-                //foreach (Category c in categories)
-                //{
-                //    MessageBox.Show(c.CategoryName.ToString());
-                //}
-            }
+            //using (TravelDBContext db = new())
+            //{
+            //    // запрос на получение всех категорий и связанных с ними продуктов
+            //    IQueryable<Category>? categories = db.Categories?
+            //    .Include(c => c.Products);
+            //    if (categories is null)
+            //    {
+            //        MessageBox.Show("Категории не найдены.");
+            //        return;
+            //    }
+            //    // выполнение запроса и перечисление результатов
+            //    //foreach (Category c in categories)
+            //    //{
+            //    //    MessageBox.Show(c.CategoryName.ToString());
+            //    //}
+            //    MessageBox.Show(categories.Count().ToString()S);
+            //}
         }
 
         private void ListViewItem_MouseEnter(object sender, MouseEventArgs e)
