@@ -1,7 +1,7 @@
 ﻿# Автоматизация работы Турагенства
 
 ![Static Badge](https://img.shields.io/badge/OkulusDev-Oxygen-Oxygen)
-![GitHub top language](https://img.shields.io/github.com/Yamemik/travel-agency)
+![GitHub top language](https://img.shields.io/github/languages/top/Yamemik/travel-agency)
 ![GitHub](https://img.shields.io/github/license/OkulusDev/Oxygen)
 ![GitHub Repo stars](https://img.shields.io/github/stars/OkulusDev/Oxygen)
 ![GitHub issues](https://img.shields.io/github/issues/OkulusDev/Oxygen)
