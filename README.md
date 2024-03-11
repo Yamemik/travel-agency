@@ -1,5 +1,11 @@
 ﻿# Автоматизация работы Турагенства
 
+![Static Badge](https://img.shields.io/badge/OkulusDev-Oxygen-Oxygen)
+![GitHub top language](https://img.shields.io/github/languages/top/OkulusDev/Oxygen)
+![GitHub](https://img.shields.io/github/license/OkulusDev/Oxygen)
+![GitHub Repo stars](https://img.shields.io/github/stars/OkulusDev/Oxygen)
+![GitHub issues](https://img.shields.io/github/issues/OkulusDev/Oxygen)
+
 ## Описание
 ### Функции:
 1. планирования туристического маршрута (api);
@@ -326,3 +332,8 @@ $ sqlite3 travel_db.db -init travel_db.sql
 |:---------------:|:----------------:|:-----------------------------------:|:------------------:|
 |        1        |        1         |                5000                 |     2020.06.03     |
 |        1        |        2         |                4500                 |     2020.06.04     |
+
+
+## Обо мне 
+[Ссылка на репозиторий](https://github.com/Yamemik/travel-agency)
+[Yamemik](https://github.com/Yamemik)
