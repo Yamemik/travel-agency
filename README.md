@@ -334,6 +334,6 @@ $ sqlite3 travel_db.db -init travel_db.sql
 |        1        |        2         |                4500                 |     2020.06.04     |
 
 
-## Обо мне 
+## Ссылки 
 [Ссылка на репозиторий](https://github.com/Yamemik/travel-agency)
 [Yamemik](https://github.com/Yamemik)

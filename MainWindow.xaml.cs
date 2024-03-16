@@ -12,6 +12,7 @@ using System.Windows.Shapes;
 
 using Microsoft.EntityFrameworkCore;
 
+
 namespace TravelAgency
 {
     public partial class MainWindow : Window
@@ -20,27 +21,7 @@ namespace TravelAgency
         {
             InitializeComponent();
 
-            QueryingCategories();
-        }
-
-        static void QueryingCategories()
-        {
-            using (TravelDBContext db = new())
-            {
-                // запрос на получение всех категорий и связанных с ними продуктов
-                IQueryable<Country>? countries = db.Countries;
-                if (countries is null)
-                {
-                    MessageBox.Show("Страны не найдены.");
-                    return;
-                }
-                // выполнение запроса и перечисление результатов
-                foreach (Country c in countries)
-                {
-                    MessageBox.Show(c.Name.ToString());
-                }
-                MessageBox.Show(countries.Count().ToString());
-            }
+            BG.Children.Clear();
         }
 
         private void ListViewItem_MouseEnter(object sender, MouseEventArgs e)
@@ -85,6 +66,21 @@ namespace TravelAgency
         private void CloseBtn_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        // Открытие туров
+        private void ListViewItem_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            BG.Children.Clear();
+            uc_tour.mama = this;
+            BG.Children.Add(uc_tour);
+        }
+
+        private void Contract_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            BG.Children.Clear();
+            uc_contract.mama = this;
+            BG.Children.Add(uc_contract);
         }
     }
 }

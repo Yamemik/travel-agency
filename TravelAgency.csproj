@@ -22,6 +22,7 @@
     <None Remove="Resources\Assets\img_travel.png" />
     <None Remove="Resources\Assets\tgBtn_default.png" />
     <None Remove="Resources\Assets\tgBtn_MouseOver.png" />
+    <None Remove="sql-scripts\travel_db.db" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,14 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="sql-scripts\travel_db.db">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Models\" />
-    <Folder Include="Pages\" />
     <Folder Include="Resources\Images\" />
   </ItemGroup>
 
@@ -74,6 +68,9 @@
     </Resource>
     <Resource Include="Resources\Assets\tgBtn_MouseOver.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="sql-scripts\travel_db.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
 

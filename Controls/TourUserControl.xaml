@@ -1,0 +1,84 @@
+﻿<UserControl x:Class="TravelAgency.Controls.TourUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TravelAgency.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily"
+                    Value="Fonts/Roboto-Light.ttf #Roboto"/>
+            <Setter Property="VerticalAlignment"
+                    Value="Center"/>
+            <Setter Property="HorizontalAlignment"
+                    Value="Left"/>
+            <Setter Property="Foreground"
+                    Value="Black"/>
+            <Setter Property="FontSize"
+                    Value="20"/>
+        </Style>
+    </UserControl.Resources>
+    
+    <Grid Margin="0,0,0,-1">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="36*"></RowDefinition>
+            <RowDefinition Height="193*"/>
+            <RowDefinition Height="12*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Background="SlateGray"/>
+        <TextBlock Text="Маршруты" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" FontFamily="Comic Sans MS" FontSize="24"
+                   Width="200" Height="32"/>
+        <Button x:Name="BtnHotels" Grid.Row="0" Content="Отели" ToolTip="Перейти к форме отелей"  VerticalAlignment="Center" HorizontalAlignment="Right"
+                FontFamily="Comic Sans MS" FontSize="18" Click="BtnHotels_Click" Margin="0,42,10,38" Background="#445c93" Height="32" Width="125"/>
+
+        <TextBlock Text="Выберите фильтр для цены: " FontFamily="Comic Sans MS" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,0,0" Grid.Row="1" Height="20" Width="196"></TextBlock>
+        <ComboBox x:Name="ComboPrice"  FontFamily="Comic Sans MS" FontSize="14" SelectionChanged="ComboPrice_SelectionChanged" Margin="5,30,0,0"
+                  Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="183" Height="24">
+            <ComboBoxItem Content="По умолчанию" IsSelected="True"/>
+            <ComboBoxItem Content="По возрастанию"/>
+            <ComboBoxItem Content="По убыванию"/>
+        </ComboBox>
+
+        <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="206,5,186,0" Grid.Row="1">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Введите текст для поиска: " Width="175" TextAlignment="Right" FontFamily="Comic Sans MS" FontSize="14"/>
+                <TextBox Width="225" x:Name="TboxSearch" TextChanged="TboxSearch_TextChanged" FontFamily="Comic Sans MS" FontSize="14"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Выберите тип: " Width="175" TextAlignment="Right" FontFamily="Comic Sans MS" FontSize="14"/>
+                <ComboBox Width="225" x:Name="ComboType" SelectionChanged="ComboType_SelectionChanged" DisplayMemberPath="Name" FontFamily="Comic Sans MS" FontSize="14"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <CheckBox x:Name="ChecActual" Checked="ChecActual_Checked" Unchecked="ChecActual_Checked" FontFamily="Comic Sans MS" FontSize="14" Content="только актуальные туры" HorizontalAlignment="Right" HorizontalContentAlignment="Right" Height="21" Width="184" RenderTransformOrigin="0.952,0.597"/>
+            </StackPanel>
+        </WrapPanel>
+
+        <TextBlock x:Name="TotalTourPrice" Text="[Стоимость туров]" FontFamily="Comic Sans MS" FontSize="14" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,5,0,0" Grid.Row="1" Width="181" Height="68" Grid.RowSpan="2"></TextBlock>
+
+        <DataGrid Grid.Row="2" x:Name="dg_tours" Background="SlateGray" AutoGenerateColumns="False" CanUserAddRows="False"
+                  AlternatingRowBackground="DarkGray" RowBackground="LightGray" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Номер" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Страна" Binding="{Binding Country.Name}"/>
+                <DataGridTextColumn Header="Дата отправки" Binding="{Binding StartDate,StringFormat={}{0:dd/MM/yyyy}}"/>
+                <DataGridTextColumn Header="Дата возвращения" Binding="{Binding FinishDate,StringFormat={}{0:dd/MM/yyyy}}"/>
+                <DataGridTextColumn Header="Стоимость услуг компании" Binding="{Binding CompanyServiceCost}"/>
+                <DataGridTextColumn Header="Количество свободных мест" Binding="{Binding NumberOfFreeSeats}"/>
+                <DataGridTextColumn Header="Отель" Binding="{Binding Hotel.Name}"/>
+                <DataGridTemplateColumn Width="auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Подробнее" Click="btnAbout_click" FontFamily="Comic Sans MS" Background="#606770"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>        
+        </DataGrid>
+
+        <Grid Background="#445c93" Grid.Row="3"/>
+    </Grid>
+</UserControl>

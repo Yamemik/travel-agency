@@ -2,11 +2,10 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:TravelAgency"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"        
+        xmlns:uc="clr-namespace:TravelAgency.Controls"
         mc:Ignorable="d"
-        Title="Турагенство"  Height="600" Width="800"
-        Topmost="True"
+        Title="Турагенство"  Height="600" Width="800"        
         WindowStartupLocation="CenterScreen">
     <Window.Resources>
 
@@ -148,8 +147,10 @@
         <!--// Background Color //-->
         <Grid Background="SlateGray">
             <!--// Background Image //-->
-            <Grid x:Name="BG" PreviewMouseLeftButtonDown="BG_PreviewMouseLeftButtonDown">
-
+            <Grid x:Name="BG" PreviewMouseLeftButtonDown="BG_PreviewMouseLeftButtonDown" Margin="65,0,0,0">
+                <uc:TourUserControl x:Name="uc_tour" />                
+                <uc:ContractUserControl x:Name="uc_contract"/>
+                <uc:MainUserControl x:Name="uc_main"/>
             </Grid>            
 
             <!--// Navigation Panel //-->
@@ -242,31 +243,31 @@
                             </StackPanel>
                             <!--// Tooltip //-->
                             <ListViewItem.ToolTip>
-                                <ToolTip x:Name="tt_home" Content="Home" Style="{StaticResource tt_style}"/>
+                                <ToolTip x:Name="tt_home" Content="Главная" Style="{StaticResource tt_style}"/>
                             </ListViewItem.ToolTip>
                         </ListViewItem>
 
                         <!--// Travel agency //-->
                         <ListViewItem HorizontalAlignment="Left" Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter">
-                            <StackPanel Orientation="Horizontal" Width="230">
+                            <StackPanel Orientation="Horizontal" Width="230" PreviewMouseLeftButtonDown="ListViewItem_MouseLeftButtonDown">
                                 <Image Source="/Resources/Assets/img_travel.png" Stretch="UniformToFill" Margin="12,0,0,0" Height="30" Width="30"/>
-                                <TextBlock Text="Рейсы" Margin="25,0,0,0" Style="{StaticResource font_style}"/>
+                                <TextBlock Text="Маршруты" Margin="25,0,0,0" Style="{StaticResource font_style}"/>
                             </StackPanel>
                             <!--// Tooltip //-->
                             <ListViewItem.ToolTip>
-                                <ToolTip x:Name="tt_contacts" Content="Contacts" Style="{StaticResource tt_style}"/>
+                                <ToolTip x:Name="tt_contacts" Content="Маршруты" Style="{StaticResource tt_style}"/>
                             </ListViewItem.ToolTip>
                         </ListViewItem>
 
                         <!--// Продажи //-->
                         <ListViewItem HorizontalAlignment="Left" Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter">
-                            <StackPanel Orientation="Horizontal" Width="230">
+                            <StackPanel Orientation="Horizontal" Width="230" PreviewMouseLeftButtonDown="Contract_MouseLeftButtonDown">
                                 <Image Source="/Resources/Assets/img_fin.png" Stretch="UniformToFill" Margin="2,0,0,0"/>
                                 <TextBlock Text="Продажи" Margin="23,0,0,0" Style="{StaticResource font_style}"/>
                             </StackPanel>
                             <!--// Tooltip //-->
                             <ListViewItem.ToolTip>
-                                <ToolTip x:Name="tt_messages" Content="Messages" Style="{StaticResource tt_style}"/>
+                                <ToolTip x:Name="tt_messages" Content="Продажи" Style="{StaticResource tt_style}"/>
                             </ListViewItem.ToolTip>
                         </ListViewItem>
 
@@ -278,7 +279,7 @@
                             </StackPanel>
                             <!--// Tooltip //-->
                             <ListViewItem.ToolTip>
-                                <ToolTip x:Name="tt_maps" Content="Maps" Style="{StaticResource tt_style}"/>
+                                <ToolTip x:Name="tt_maps" Content="Аналитика" Style="{StaticResource tt_style}"/>
                             </ListViewItem.ToolTip>
                         </ListViewItem>
 
@@ -290,7 +291,7 @@
                             </StackPanel>
                             <!--// Tooltip //-->
                             <ListViewItem.ToolTip>
-                                <ToolTip x:Name="tt_settings" Content="Settings" Style="{StaticResource tt_style}"/>
+                                <ToolTip x:Name="tt_settings" Content="Настройки" Style="{StaticResource tt_style}"/>
                             </ListViewItem.ToolTip>
                         </ListViewItem>
 
@@ -302,7 +303,7 @@
                             </StackPanel>
                             <!--// Tooltip //-->
                             <ListViewItem.ToolTip>
-                                <ToolTip x:Name="tt_signout" Content="Sign Out" Style="{StaticResource tt_style}"/>
+                                <ToolTip x:Name="tt_signout" Content="Выйти" Style="{StaticResource tt_style}"/>
                             </ListViewItem.ToolTip>
                         </ListViewItem>
 
