@@ -17,7 +17,6 @@ namespace TravelAgency.Windows
         {
             using (TravelDBContext db = new())
             {
-                // запрос на получение всех категорий и связанных с ними продуктов
                 IQueryable<Hotel>? hotels = db.Hotels;
 
                 DGridHotels.ItemsSource = hotels.ToList<Hotel>();
