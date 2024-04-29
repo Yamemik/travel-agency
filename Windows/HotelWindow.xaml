@@ -23,14 +23,12 @@
 
         <Grid Background="LightBlue" Margin="0,0,0.4,23" Grid.Row="0" Grid.RowSpan="2"/>
         <TextBlock Text="Отели" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" FontFamily="Comic Sans MS" FontSize="24" Width="75" Height="37"/>
-        <Button x:Name="BtnTours" Content="Отмена" ToolTip="Перейти на форму маршрутов" VerticalAlignment="Center" HorizontalAlignment="Right" FontFamily="Comic Sans MS" FontSize="18"
-                Click="BtnTours_Click"  Margin="0,32,10.4,31" Height="27" RenderTransformOrigin="0.5,0.5" Width="120"/>
 
         <DataGrid x:Name="DGridHotels" AutoGenerateColumns="False" IsReadOnly="True" Margin="0,1,0.4,0" Grid.RowSpan="2" Grid.Row="1" FontFamily="Comic Sans MS" FontWeight="Bold">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Название отеля" Binding="{Binding Name}" Width="*" FontFamily="Comic Sans MS" FontSize="14"></DataGridTextColumn>
                 <DataGridTextColumn Header="Количество звёзд" Binding="{Binding CompanyPrice}" Width="*" FontFamily="Comic Sans MS" FontSize="14"></DataGridTextColumn>
-                <DataGridTextColumn Header="Количество туров" Binding="{Binding CustomerPrice}" Width="*" FontFamily="Comic Sans MS" FontSize="14"></DataGridTextColumn>
+                <DataGridTextColumn Header="Стоимость" Binding="{Binding CustomerPrice}" Width="*" FontFamily="Comic Sans MS" FontSize="14"></DataGridTextColumn>
                 <DataGridTemplateColumn Width="auto">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -42,6 +40,8 @@
         </DataGrid>
 
         <Button ToolTip="Перейти к добавлению нового отеля" FontFamily="Comic Sans MS" FontSize="14" Content="Добавить" Grid.Row="3" HorizontalAlignment="Left" Name="BtnAdd" Click="BtnAdd_Click" Margin="10,10,0,10" Width="130"></Button>
+        <Button x:Name="BtnTours" Content="Закрыть" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Comic Sans MS" FontSize="18" Width="120"
+                Click="BtnTours_Click" Height="27" RenderTransformOrigin="0.5,0.5" Grid.Row="3"/>
         <Button ToolTip="Нажмите для удаления выбранных отелей" FontFamily="Comic Sans MS" FontSize="14" Content="Удалить" Grid.Row="3" HorizontalAlignment="Right" Name ="BtnDelete" Click="BtnDelete_Click" Margin="0,10,10.4,10" Width="120"></Button>
 
         <Grid Background="#445c93" Grid.Row="4" Margin="0,0,0.4,0"/>

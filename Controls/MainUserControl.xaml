@@ -6,7 +6,46 @@
              xmlns:local="clr-namespace:TravelAgency.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <!-- Styles -->
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+        <Style TargetType="Border">
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="5"/>
+        </Style>
+
+        <Style TargetType="DataGrid">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="AutoGenerateColumns" Value="True"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+        </Style>
+    </UserControl.Resources>
+
+
     <Grid>
-            
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- News Block -->
+        <Border Grid.Column="0">
+            <StackPanel>
+                <TextBlock Text="Последние Новости" FontWeight="Bold" FontSize="16"/>
+                <TextBlock Text="- Туроператоры вновь предлагают туры на Кипр на стыковочных рейсах"/>
+                <TextBlock Text="- Аэропорт Элиста откроется для полетов гражданской авиации"/>
+                <TextBlock Text="- Отель «Аква Вилла» под Туапсе охватило огнем после громкого хлопка"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Calendar -->
+        <Border Grid.Column="1">
+            <Calendar/>
+        </Border>
     </Grid>
 </UserControl>

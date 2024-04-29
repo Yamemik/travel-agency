@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Windows;
 using System.Windows.Controls;
-using TravelAgency.Windows;
 
 
 namespace TravelAgency.Controls
@@ -59,13 +58,6 @@ namespace TravelAgency.Controls
         private void ChecActual_Checked(object sender, RoutedEventArgs e)
         {
             UpdateTours();
-        }
-
-        private void BtnHotels_Click(object sender, RoutedEventArgs e)
-        {
-            HotelWindow hotelWindow = new HotelWindow();
-            hotelWindow.Owner = this.mama;
-            hotelWindow.Show();
         }
 
         private void ComboPrice_SelectionChanged(object sender, SelectionChangedEventArgs e)
