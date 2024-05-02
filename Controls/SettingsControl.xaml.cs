@@ -24,5 +24,12 @@ namespace TravelAgency.Controls
             hotelWindow.Owner = this.mama;
             hotelWindow.Show();
         }
+
+        private void BtnTours_Click(object sender, RoutedEventArgs e)
+        {
+            ToursWindow toursWindow = new ToursWindow();
+            toursWindow.Owner = this.mama;
+            toursWindow.Show();
+        }
     }
 }

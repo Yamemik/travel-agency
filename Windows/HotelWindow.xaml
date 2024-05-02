@@ -26,6 +26,7 @@
 
         <DataGrid x:Name="DGridHotels" AutoGenerateColumns="False" IsReadOnly="True" Margin="0,1,0.4,0" Grid.RowSpan="2" Grid.Row="1" FontFamily="Comic Sans MS" FontWeight="Bold">
             <DataGrid.Columns>
+                <DataGridTextColumn Header="Номер" Binding="{Binding Id}" Width="*" FontFamily="Comic Sans MS" FontSize="14"></DataGridTextColumn>
                 <DataGridTextColumn Header="Название отеля" Binding="{Binding Name}" Width="*" FontFamily="Comic Sans MS" FontSize="14"></DataGridTextColumn>
                 <DataGridTextColumn Header="Количество звёзд" Binding="{Binding CompanyPrice}" Width="*" FontFamily="Comic Sans MS" FontSize="14"></DataGridTextColumn>
                 <DataGridTextColumn Header="Стоимость" Binding="{Binding CustomerPrice}" Width="*" FontFamily="Comic Sans MS" FontSize="14"></DataGridTextColumn>

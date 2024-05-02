@@ -51,11 +51,11 @@
         <Grid Background="SlateGray" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,5,0,0"/>
 
         <StackPanel Grid.Row="1">
-            <Button x:Name="BtnHotels" Content="Отели" ToolTip="Перейти к форме отелей" Click="BtnHotels_Click"/>
+            <Button x:Name="BtnTours" Content="Туры" ToolTip="Перейти к форме туров" Click="BtnTours_Click"/>
         </StackPanel>
         
         <StackPanel Grid.Row="1" Grid.Column="1">
-
+            <Button x:Name="BtnHotels" Content="Отели" ToolTip="Перейти к форме отелей" Click="BtnHotels_Click"/>
         </StackPanel>
 
 

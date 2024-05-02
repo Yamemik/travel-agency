@@ -1,25 +1,26 @@
-﻿using System.Windows;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Windows;
 using System.Windows.Controls;
-
 
 namespace TravelAgency.Windows
 {
-    public partial class HotelWindow : Window
+    public partial class ToursWindow : Window
     {
-        public HotelWindow()
+        public ToursWindow()
         {
             InitializeComponent();
 
-            QueryingHotels();
+            QueryingTours();
         }
 
-        private void QueryingHotels()
+        private void QueryingTours()
         {
             using (TravelDBContext db = new())
             {
-                IQueryable<Hotel>? hotels = db.Hotels;
+                IQueryable<Tour>? tours = db.Tours?
+                    .Include(c => c.Country);
 
-                DGridHotels.ItemsSource = hotels.ToList<Hotel>();
+                DGridTours.ItemsSource = tours.ToList<Tour>();
             }
         }
 
@@ -36,32 +37,31 @@ namespace TravelAgency.Windows
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-            var hotelsForRemoving = DGridHotels.SelectedItems.Cast<Hotel>().ToList();
-            if (MessageBox.Show($"Вы точно хотите удалить следущие {hotelsForRemoving.Count()} элемент?", "Внимание",
+            var toursForRemoving = DGridTours.SelectedItems.Cast<Tour>().ToList();
+            if (MessageBox.Show($"Вы точно хотите удалить следущие {toursForRemoving.Count()} элемент?", "Внимание",
                 MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 try
                 {
                     using (TravelDBContext db = new())
                     {
-                        // запрос на получение всех категорий и связанных с ними продуктов
-                        IQueryable<Hotel>? hotels = db.Hotels
-                            .Where(c => c.Id == hotelsForRemoving[0].Id);
+                        IQueryable<Tour>? tours = db.Tours
+                            .Where(c => c.Id == toursForRemoving[0].Id);
 
-                        if (hotels is null)
+                        if (tours is null)
                         {
                             MessageBox.Show("No products found to delete.");
                             return;
                         }
                         else
                         {
-                            db.Hotels.RemoveRange(hotels);
+                            db.Tours.RemoveRange(tours);
                         }
                         int affected = db.SaveChanges();
                     }
                     MessageBox.Show("Данные удалены");
 
-                    QueryingHotels();
+                    QueryingTours();
                 }
                 catch (Exception ex)
                 {
