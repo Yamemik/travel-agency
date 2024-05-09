@@ -27,7 +27,7 @@ namespace TravelAgency.Windows
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-            AddEditPageHotel addEditPage = new AddEditPageHotel((sender as Button).DataContext as Hotel);
+            AddEditPageHotel addEditPage = new AddEditPageHotel(((Button)sender).DataContext as Hotel);
             addEditPage.Show();
         }
         private void BtnAdd_Click(object sender, RoutedEventArgs e)

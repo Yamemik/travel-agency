@@ -42,27 +42,13 @@ public partial class TravelDBContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Airline>(entity =>
-        {
-            entity.Property(e => e.Id).ValueGeneratedNever();
-        });
-
         modelBuilder.Entity<Contract>(entity =>
         {
-            entity.Property(e => e.Id).ValueGeneratedNever();
-
             entity.HasOne(d => d.Tour).WithMany(p => p.Contracts).OnDelete(DeleteBehavior.ClientSetNull);
-        });
-
-        modelBuilder.Entity<Country>(entity =>
-        {
-            entity.Property(e => e.Id).ValueGeneratedNever();
         });
 
         modelBuilder.Entity<Customer>(entity =>
         {
-            entity.Property(e => e.Id).ValueGeneratedNever();
-
             entity.HasMany(d => d.Contracts).WithMany(p => p.Customers)
                 .UsingEntity<Dictionary<string, object>>(
                     "Tourist",
@@ -83,15 +69,11 @@ public partial class TravelDBContext : DbContext
 
         modelBuilder.Entity<Excursion>(entity =>
         {
-            entity.Property(e => e.Id).ValueGeneratedNever();
-
             entity.HasOne(d => d.Country).WithMany(p => p.Excursions).OnDelete(DeleteBehavior.ClientSetNull);
         });
 
         modelBuilder.Entity<Flight>(entity =>
         {
-            entity.Property(e => e.Id).ValueGeneratedNever();
-
             entity.HasOne(d => d.Airline).WithMany(p => p.Flights).OnDelete(DeleteBehavior.ClientSetNull);
 
             entity.HasOne(d => d.DepartureCountry).WithMany(p => p.FlightDepartureCountries).OnDelete(DeleteBehavior.ClientSetNull);
@@ -106,15 +88,8 @@ public partial class TravelDBContext : DbContext
             entity.HasOne(d => d.Flight).WithMany().OnDelete(DeleteBehavior.ClientSetNull);
         });
 
-        modelBuilder.Entity<Hotel>(entity =>
-        {
-            entity.Property(e => e.Id).ValueGeneratedNever();
-        });
-
         modelBuilder.Entity<Tour>(entity =>
         {
-            entity.Property(e => e.Id).ValueGeneratedNever();
-
             entity.HasOne(d => d.ArrivalFlight).WithMany(p => p.TourArrivalFlights).OnDelete(DeleteBehavior.ClientSetNull);
 
             entity.HasOne(d => d.Country).WithMany(p => p.Tours).OnDelete(DeleteBehavior.ClientSetNull);

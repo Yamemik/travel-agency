@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Text;
 using System.Windows;
+using TravelAgency.Windows.users;
 
 
 namespace TravelAgency.Windows
@@ -8,7 +9,7 @@ namespace TravelAgency.Windows
     public partial class AddEditPageHotel : Window
     {
         private Hotel _currentHotel = new Hotel();
-        public AddEditPageHotel(Hotel selectedHotel)
+        public AddEditPageHotel(Hotel? selectedHotel)
         {
             InitializeComponent();
 
@@ -40,19 +41,22 @@ namespace TravelAgency.Windows
                     if (_currentHotel.Id == 0)
                     {
                         IQueryable<Hotel>? hotel = db.Hotels;
-                        Random rnd = new Random();
-                        _currentHotel.Id = rnd.Next(1,1000);
-                        //_currentHotel.Id = hotel.Max(c => c.Id).;
                         db.Hotels.Add(_currentHotel);
                     }
-                    else if (_currentHotel.Id == 0)
+                    else 
                     {
+                        Hotel updateHotel = db.Hotels
+                            .First(c => c.Id == _currentHotel.Id);
 
+                        updateHotel.Name = _currentHotel.Name; 
+                        updateHotel.CompanyPrice = _currentHotel.CompanyPrice; 
+                        updateHotel.CustomerPrice = _currentHotel.CustomerPrice; 
                     }
 
                     // сохранение отслеживаемых изменений в базе данных
                     db.SaveChanges();
                     MessageBox.Show("Информация сохранена!");
+
                     HotelWindow hotelWindow = new HotelWindow();
                     hotelWindow.Show();
                     this.Close();
@@ -67,7 +71,13 @@ namespace TravelAgency.Windows
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            var response = MessageBox.Show("Закрыть?", "Закрыть", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (response == MessageBoxResult.Yes)
+            {
+                HotelWindow hotelWindow = new HotelWindow();
+                hotelWindow.Show();
+                this.Close();
+            }
         }
     }
 }

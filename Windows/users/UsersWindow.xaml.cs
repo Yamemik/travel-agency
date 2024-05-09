@@ -25,13 +25,15 @@ namespace TravelAgency.Windows.users
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-            AddEditPageHotel addEditPage = new AddEditPageHotel((sender as Button).DataContext as Hotel);
+            AddEditUsersWindow addEditPage = new AddEditUsersWindow(((Button)sender).DataContext as User);
             addEditPage.Show();
+            this.Close();
         }
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            AddEditPageHotel addEditPage = new AddEditPageHotel(null!);
+            AddEditUsersWindow addEditPage = new AddEditUsersWindow(null!);
             addEditPage.Show();
+            this.Close();
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)

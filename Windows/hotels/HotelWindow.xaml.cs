@@ -25,7 +25,7 @@ namespace TravelAgency.Windows
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-            AddEditPageHotel addEditPage = new AddEditPageHotel((sender as Button).DataContext as Hotel);
+            AddEditPageHotel addEditPage = new AddEditPageHotel(((Button)sender).DataContext as Hotel);
             addEditPage.Show();
         }
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
@@ -44,13 +44,12 @@ namespace TravelAgency.Windows
                 {
                     using (TravelDBContext db = new())
                     {
-                        // запрос на получение всех категорий и связанных с ними продуктов
                         IQueryable<Hotel>? hotels = db.Hotels
                             .Where(c => c.Id == hotelsForRemoving[0].Id);
 
                         if (hotels is null)
                         {
-                            MessageBox.Show("No products found to delete.");
+                            MessageBox.Show("No hotels found to delete.");
                             return;
                         }
                         else

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TravelAgency.Windows.users"
         mc:Ignorable="d"
-        Title="AddEditUsersWindow" Height="450" Width="800" WindowStyle="None">
+        Title="AddEditUsersWindow" Height="450" Width="700" WindowStyle="None">
 
     <Window.Resources>
         <Style TargetType="TextBlock">
@@ -22,6 +22,16 @@
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="Margin" Value="0,20,0,0"/>
             <Setter Property="MinWidth" Value="300"/>
+            <Setter Property="MinWidth" Value="300"/>
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="0,20,0,0"/>
+            <Setter Property="MinWidth" Value="300"/>
+            <Setter Property="Height" Value="22"/>
         </Style>
     </Window.Resources>
     
@@ -40,15 +50,21 @@
         <Grid Background="#bae3e8" Margin="0,0,0.6,0" Grid.ColumnSpan="2"/>
 
         <StackPanel Grid.Row="1" Margin="0,0,15,0">
-            <TextBlock Text="Название"/>
-            <TextBlock Text="Количество звёзд"/>
-            <TextBlock Text="Цена"/>
+            <TextBlock Text="Фамилия"/>
+            <TextBlock Text="Имя"/>
+            <TextBlock Text="Отчество"/>
+            <TextBlock Text="Роль"/>
+            <TextBlock Text="Логин"/>
+            <TextBlock Text="Пароль"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="1">
-            <TextBox Text="{Binding Name}"/>
-            <TextBox Text="{Binding CompanyPrice}"/>
-            <TextBox Text="{Binding CustomerPrice}"/>
+            <TextBox Name="surname" Text="{Binding Surname}" KeyUp="TextBox_KeyDown"/>
+            <TextBox x:Name="name" Text="{Binding Name}" KeyUp="TextBox_KeyDown"/>
+            <TextBox x:Name="patr" Text="{Binding Patronymic}" KeyUp="TextBox_KeyDown"/>
+            <ComboBox x:Name="role" SelectedValue="{Binding Role}"/>
+            <TextBox x:Name="login" Text="{Binding Login}"/>
+            <TextBox Text="{Binding Password}"/>
         </StackPanel>
         
         <TextBlock Text="Добавление / Редактирование" Margin="29,23,207,24" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Right" FontFamily="Comic Sans MS" FontSize="24" Width="356" Height="37" Grid.Column="1"/>
