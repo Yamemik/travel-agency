@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using TravelAgency.Windows;
+using TravelAgency.Windows.users;
 
 namespace TravelAgency.Controls
 {
@@ -30,6 +31,13 @@ namespace TravelAgency.Controls
             ToursWindow toursWindow = new ToursWindow();
             toursWindow.Owner = this.mama;
             toursWindow.Show();
+        }
+
+        private void BtnUsers_Click(object sender, RoutedEventArgs e)
+        {
+            UsersWindow usersWindow = new UsersWindow();
+            usersWindow.Owner = this.mama;
+            usersWindow.Show();
         }
     }
 }

@@ -23,6 +23,8 @@ public partial class TravelDBContext : DbContext
 
     public virtual DbSet<Customer> Customers { get; set; }
 
+    public virtual DbSet<User> Users { get; set; }
+
     public virtual DbSet<Excursion> Excursions { get; set; }
 
     public virtual DbSet<Flight> Flights { get; set; }

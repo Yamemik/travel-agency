@@ -22,7 +22,7 @@
         </Style>
 
         <Style TargetType="Button">
-            <Setter Property="Background" Value="#445c93"/>
+            <Setter Property="Background" Value="#595c73"/>
             <Setter Property="FontFamily" Value="Comic Sans MS"/>
             <Setter Property="FontSize" Value="18"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -41,6 +41,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="120"/>
             <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
 
         <Grid Background="SlateGray" Grid.ColumnSpan="2"/>
@@ -48,7 +49,7 @@
         <TextBlock Text="Настройки" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" FontFamily="Comic Sans MS" FontSize="24"
                    Width="200" Height="32" Grid.ColumnSpan="2"/>
 
-        <Grid Background="SlateGray" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,5,0,0"/>
+        <Grid Background="Gray" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="0,5,0,0"/>
 
         <StackPanel Grid.Row="1">
             <Button x:Name="BtnTours" Content="Туры" ToolTip="Перейти к форме туров" Click="BtnTours_Click"/>
@@ -58,8 +59,9 @@
             <Button x:Name="BtnHotels" Content="Отели" ToolTip="Перейти к форме отелей" Click="BtnHotels_Click"/>
         </StackPanel>
 
-
-
+        <StackPanel Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+            <Button x:Name="BtnUsers" Content="Пользователи" ToolTip="Перейти к форме пользователей" Click="BtnUsers_Click"/>
+        </StackPanel>
 
     </Grid>
 </UserControl>

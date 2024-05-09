@@ -1,27 +1,25 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace TravelAgency.Windows
+namespace TravelAgency.Windows.users
 {
-    public partial class ToursWindow : Window
+    public partial class UsersWindow : Window
     {
-        public ToursWindow()
+        public UsersWindow()
         {
             InitializeComponent();
 
             QueryingTours();
+
         }
 
         private void QueryingTours()
         {
             using (TravelDBContext db = new())
             {
-                IQueryable<Tour>? tours = db.Tours?
-                    .Include(c => c.Country)
-                    .Include(c => c.Hotel);
+                IQueryable<User>? users = db.Users;
 
-                DGridTours.ItemsSource = tours?.ToList<Tour>();
+                DGridUsers.ItemsSource = users?.ToList<User>();
             }
         }
 
@@ -38,25 +36,25 @@ namespace TravelAgency.Windows
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-            var toursForRemoving = DGridTours.SelectedItems.Cast<Tour>().ToList();
-            if (MessageBox.Show($"Вы точно хотите удалить следущие {toursForRemoving.Count()} элемент?", "Внимание",
+            var usersForRemoving = DGridUsers.SelectedItems.Cast<User>().ToList();
+            if (MessageBox.Show($"Вы точно хотите удалить следущие {usersForRemoving.Count()} элемент?", "Внимание",
                 MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 try
                 {
                     using (TravelDBContext db = new())
                     {
-                        IQueryable<Tour>? tours = db.Tours
-                            .Where(c => c.Id == toursForRemoving[0].Id);
+                        IQueryable<User>? users = db.Users
+                            .Where(c => c.Id == usersForRemoving[0].Id);
 
-                        if (tours is null)
+                        if (users is null)
                         {
                             MessageBox.Show("No products found to delete.");
                             return;
                         }
                         else
                         {
-                            db.Tours.RemoveRange(tours);
+                            db.Users.RemoveRange(users);
                         }
                         int affected = db.SaveChanges();
                     }
