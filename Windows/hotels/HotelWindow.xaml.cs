@@ -6,11 +6,22 @@ namespace TravelAgency.Windows
 {
     public partial class HotelWindow : Window
     {
-        public HotelWindow()
+        public Hotel selectedHotel { get; set; }
+
+        public HotelWindow(bool isSelect = false)
         {
             InitializeComponent();
 
             QueryingHotels();
+
+            if (isSelect)
+            {
+                BtnSelectColumn.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                BtnSelectColumn.Visibility = Visibility.Hidden;
+            }
         }
 
         private void QueryingHotels()
@@ -71,6 +82,13 @@ namespace TravelAgency.Windows
 
         private void BtnTours_Click(object sender, RoutedEventArgs e)
         {
+            this.Close();
+        }
+
+        private void BtnSelect_Click(object sender, RoutedEventArgs e)
+        {
+            selectedHotel = (Hotel)((Button)sender).DataContext;            
+
             this.Close();
         }
     }

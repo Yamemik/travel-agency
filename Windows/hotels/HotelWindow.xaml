@@ -33,7 +33,16 @@
                 <DataGridTemplateColumn Width="auto">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Content="Редактировать" ToolTip="Перейти к редактированию данного отеля"  Name="BtnEdit" Click="BtnEdit_Click" Width="150" FontFamily="Comic Sans MS" FontSize="14" Background="#fac716"></Button>
+                            <Button Content="*" ToolTip="Перейти к редактированию данного отеля"  Name="BtnEdit" Click="BtnEdit_Click" Width="50"
+                                    FontFamily="Comic Sans MS" FontSize="14"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="auto" x:Name="BtnSelectColumn">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="+" Name="BtnSelect" Click="BtnSelect_Click" Width="50" FontFamily="Comic Sans MS" FontSize="14"
+                                    Background="#fac716" ToolTip="Выбрать отель"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

@@ -9,11 +9,11 @@ namespace TravelAgency.Windows.users
         {
             InitializeComponent();
 
-            QueryingTours();
+            QueryingUsers();
 
         }
 
-        private void QueryingTours()
+        private void QueryingUsers()
         {
             using (TravelDBContext db = new())
             {
@@ -62,7 +62,7 @@ namespace TravelAgency.Windows.users
                     }
                     MessageBox.Show("Данные удалены");
 
-                    QueryingTours();
+                    QueryingUsers();
                 }
                 catch (Exception ex)
                 {

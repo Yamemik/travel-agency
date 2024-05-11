@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Windows;
 using System.Windows.Controls;
+using TravelAgency.Windows.tours;
 
 namespace TravelAgency.Windows
 {
@@ -27,13 +28,15 @@ namespace TravelAgency.Windows
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-            AddEditPageHotel addEditPage = new AddEditPageHotel(((Button)sender).DataContext as Hotel);
+            AddEditToursWindow addEditPage = new AddEditToursWindow(((Button)sender).DataContext as Tour);
             addEditPage.Show();
+            this.Close();
         }
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            AddEditPageHotel addEditPage = new AddEditPageHotel(null!);
+            AddEditToursWindow addEditPage = new AddEditToursWindow(null!);
             addEditPage.Show();
+            this.Close();
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
@@ -51,7 +54,7 @@ namespace TravelAgency.Windows
 
                         if (tours is null)
                         {
-                            MessageBox.Show("No products found to delete.");
+                            MessageBox.Show("No tours found to delete.");
                             return;
                         }
                         else

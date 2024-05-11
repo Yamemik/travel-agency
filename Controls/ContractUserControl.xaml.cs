@@ -21,7 +21,7 @@ namespace TravelAgency.Controls
         public MainWindow mama
         {
             set { win = value; }
-            get { return win; }
+            get { return win!; }
         }
 
         private void QueryingContracts()
@@ -39,7 +39,7 @@ namespace TravelAgency.Controls
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-            AddEditPageHotel addEditPage = new AddEditPageHotel((sender as Button).DataContext as Hotel);
+            AddEditPageHotel addEditPage = new AddEditPageHotel(((Button)sender).DataContext as Hotel);
             addEditPage.Show();
         }
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
@@ -106,13 +106,6 @@ namespace TravelAgency.Controls
         private void ChecActual_Checked(object sender, RoutedEventArgs e)
         {
             UpdateTours();
-        }
-
-        private void BtnHotels_Click(object sender, RoutedEventArgs e)
-        {
-            HotelWindow hotelWindow = new HotelWindow();
-            hotelWindow.Owner = this.mama;
-            hotelWindow.Show();
         }
 
         private void ComboPrice_SelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -21,7 +21,7 @@ namespace TravelAgency.Controls
 
         private void BtnHotels_Click(object sender, RoutedEventArgs e)
         {
-            HotelWindow hotelWindow = new HotelWindow();
+            HotelWindow hotelWindow = new HotelWindow(false);
             hotelWindow.Owner = this.mama;
             hotelWindow.Show();
         }

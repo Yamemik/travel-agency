@@ -27,13 +27,13 @@
         <DataGrid x:Name="DGridTours" AutoGenerateColumns="False" IsReadOnly="True" Margin="0,1,0.4,0" Grid.RowSpan="2" Grid.Row="1" FontFamily="Comic Sans MS" FontWeight="Bold">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Номер" Binding="{Binding Id}" Width="*" FontFamily="Comic Sans MS" FontSize="14"></DataGridTextColumn>
-                <DataGridTextColumn Header="Страна" Binding="{Binding Country.Name}" Width="*" FontFamily="Comic Sans MS" FontSize="14"></DataGridTextColumn>
-                <DataGridTextColumn Header="DepartureFlightId" Binding="{Binding DepartureFlightId}" Width="*" FontFamily="Comic Sans MS" FontSize="14"></DataGridTextColumn>
-                <DataGridTextColumn Header="ArrivalFlightId" Binding="{Binding ArrivalFlightId}" Width="*" FontFamily="Comic Sans MS" FontSize="14"></DataGridTextColumn>
-                <DataGridTextColumn Header="StartDate" Binding="{Binding StartDate}" Width="*" FontFamily="Comic Sans MS" FontSize="14"></DataGridTextColumn>
-                <DataGridTextColumn Header="FinishDate" Binding="{Binding FinishDate}" Width="*" FontFamily="Comic Sans MS" FontSize="14"></DataGridTextColumn>
                 <DataGridTextColumn Header="Отель" Binding="{Binding Hotel.Name}" Width="*" FontFamily="Comic Sans MS" FontSize="14"></DataGridTextColumn>
-                <DataGridTextColumn Header="CompanyServiceCost" Binding="{Binding CompanyServiceCost}" Width="*" FontFamily="Comic Sans MS" FontSize="14"></DataGridTextColumn>
+                <DataGridTextColumn Header="Страна" Binding="{Binding Country.Name}" Width="*" FontFamily="Comic Sans MS" FontSize="14"></DataGridTextColumn>
+                <DataGridTextColumn Header="Рейс отправления" Binding="{Binding DepartureFlightId}" Width="*" FontFamily="Comic Sans MS" FontSize="14"></DataGridTextColumn>
+                <DataGridTextColumn Header="Рейс прибытия" Binding="{Binding ArrivalFlightId}" Width="*" FontFamily="Comic Sans MS" FontSize="14"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата начала" Binding="{Binding StartDate}" Width="*" FontFamily="Comic Sans MS" FontSize="14"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата окончания" Binding="{Binding FinishDate}" Width="*" FontFamily="Comic Sans MS" FontSize="14"></DataGridTextColumn>
+                <DataGridTextColumn Header="Стоимость" Binding="{Binding CompanyServiceCost}" Width="*" FontFamily="Comic Sans MS" FontSize="14"></DataGridTextColumn>
                 <DataGridTemplateColumn Width="auto">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
