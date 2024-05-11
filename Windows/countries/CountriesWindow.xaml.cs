@@ -1,18 +1,17 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-
+using TravelAgency.Windows.countries;
 
 namespace TravelAgency.Windows
 {
-    public partial class HotelWindow : Window
+    public partial class CountriesWindow : Window
     {
-        public Hotel? selectedHotel { get; set; }
-
-        public HotelWindow(bool isSelect = false)
+        public Country? selectedRow { get; set; }
+        public CountriesWindow(bool isSelect = false)
         {
             InitializeComponent();
 
-            QueryingHotels();
+            QueryingEntities();
 
             if (isSelect)
             {
@@ -29,54 +28,56 @@ namespace TravelAgency.Windows
             }
         }
 
-        private void QueryingHotels()
+        private void QueryingEntities()
         {
             using (TravelDBContext db = new())
             {
-                IQueryable<Hotel>? hotels = db.Hotels;
+                IQueryable<Country>? countries = db.Countries;
 
-                DGridHotels.ItemsSource = hotels.ToList<Hotel>();
+                DGrid.ItemsSource = countries.ToList<Country>();
             }
         }
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-            AddEditPageHotel addEditPage = new AddEditPageHotel(((Button)sender).DataContext as Hotel);
+            AddEditCountryWindow addEditPage = new AddEditCountryWindow(((Button)sender).DataContext as Country);
             addEditPage.Show();
+            this.Close();
         }
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            AddEditPageHotel addEditPage = new AddEditPageHotel(null!);
+            AddEditCountryWindow addEditPage = new AddEditCountryWindow(null!);
             addEditPage.Show();
+            this.Close();
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-            var hotelsForRemoving = DGridHotels.SelectedItems.Cast<Hotel>().ToList();
-            if (MessageBox.Show($"Вы точно хотите удалить следущие {hotelsForRemoving.Count()} элемент?", "Внимание",
+            var rowForRemoving = DGrid.SelectedItems.Cast<Country>().ToList();
+            if (MessageBox.Show($"Вы точно хотите удалить следущие {rowForRemoving.Count()} элемент?", "Внимание",
                 MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 try
                 {
                     using (TravelDBContext db = new())
                     {
-                        IQueryable<Hotel>? hotels = db.Hotels
-                            .Where(c => c.Id == hotelsForRemoving[0].Id);
+                        IQueryable<Country>? entities = db.Countries
+                            .Where(c => c.Id == rowForRemoving[0].Id);
 
-                        if (hotels is null)
+                        if (entities is null)
                         {
-                            MessageBox.Show("No hotels found to delete.");
+                            MessageBox.Show("No entities found to delete.");
                             return;
                         }
                         else
                         {
-                            db.Hotels.RemoveRange(hotels);
+                            db.Countries.RemoveRange(entities);
                         }
                         int affected = db.SaveChanges();
                     }
                     MessageBox.Show("Данные удалены");
 
-                    QueryingHotels();
+                    QueryingEntities();
                 }
                 catch (Exception ex)
                 {
@@ -92,7 +93,7 @@ namespace TravelAgency.Windows
 
         private void BtnSelect_Click(object sender, RoutedEventArgs e)
         {
-            selectedHotel = (Hotel)((Button)sender).DataContext;            
+            selectedRow = (Country)((Button)sender).DataContext;
 
             this.Close();
         }

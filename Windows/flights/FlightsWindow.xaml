@@ -1,11 +1,11 @@
-﻿<Window x:Class="TravelAgency.Windows.HotelWindow"
+﻿<Window x:Class="TravelAgency.Windows.flights.FlightsWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:TravelAgency.Windows"
+        xmlns:local="clr-namespace:TravelAgency.Windows.flights"
         mc:Ignorable="d"
-        Title="HotelWindow" Height="450" Width="800" WindowStyle="None">
+        Title="FlightsWindow" Height="450" Width="800" WindowStyle="None">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Background" Value="LightGreen"/>
@@ -22,19 +22,20 @@
         </Grid.RowDefinitions>
 
         <Grid Background="LightBlue" Margin="0,0,0.4,23" Grid.Row="0" Grid.RowSpan="2"/>
-        <TextBlock Text="Отели" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" FontFamily="Comic Sans MS" FontSize="24" Width="75" Height="37"/>
+        <TextBlock Text="Авиарейсы" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" FontFamily="Comic Sans MS" FontSize="24" Height="37"/>
 
-        <DataGrid x:Name="DGridHotels" AutoGenerateColumns="False" IsReadOnly="True" Margin="0,1,0.4,0" Grid.RowSpan="2" Grid.Row="1" FontFamily="Comic Sans MS" FontWeight="Bold">
+        <DataGrid x:Name="DGrid" AutoGenerateColumns="False" IsReadOnly="True" Margin="0,1,0.4,0" Grid.RowSpan="2" Grid.Row="1" FontFamily="Comic Sans MS" FontWeight="Bold">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Номер" Binding="{Binding Id}" Width="*" FontFamily="Comic Sans MS" FontSize="14"></DataGridTextColumn>
-                <DataGridTextColumn Header="Название отеля" Binding="{Binding Name}" Width="*" FontFamily="Comic Sans MS" FontSize="14"></DataGridTextColumn>
-                <DataGridTextColumn Header="Количество звёзд" Binding="{Binding CompanyPrice}" Width="*" FontFamily="Comic Sans MS" FontSize="14"></DataGridTextColumn>
-                <DataGridTextColumn Header="Стоимость" Binding="{Binding CustomerPrice}" Width="*" FontFamily="Comic Sans MS" FontSize="14"></DataGridTextColumn>
+                <DataGridTextColumn Header="Авиакомпания" Binding="{Binding Airline.Name}" Width="*" FontFamily="Comic Sans MS" FontSize="14"></DataGridTextColumn>
+                <DataGridTextColumn Header="Цена" Binding="{Binding CustomerPrice}" Width="*" FontFamily="Comic Sans MS" FontSize="14"></DataGridTextColumn>
+                <DataGridTextColumn Header="Страна отправления" Binding="{Binding DepartureCountry.Name}" Width="*" FontFamily="Comic Sans MS" FontSize="14"></DataGridTextColumn>
+                <DataGridTextColumn Header="Страна назначения" Binding="{Binding DestinationCountryId.Name}" Width="*" FontFamily="Comic Sans MS" FontSize="14"></DataGridTextColumn>
                 <DataGridTemplateColumn Width="auto" x:Name="BtnEditColumn">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Content="*" ToolTip="Перейти к редактированию данного отеля"  Name="BtnEdit" Click="BtnEdit_Click" Width="50"
-                                    FontFamily="Comic Sans MS" FontSize="14"/>
+                            <Button Content="*" ToolTip="Перейти к редактированию"  Name="BtnEdit" Click="BtnEdit_Click" Width="150" FontFamily="Comic Sans MS"
+                                    FontSize="14" Background="DodgerBlue"></Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -42,17 +43,17 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Content="+" Name="BtnSelect" Click="BtnSelect_Click" Width="50" FontFamily="Comic Sans MS" FontSize="14"
-                                    Background="#fac716" ToolTip="Выбрать отель"/>
+                                    Background="#fac716" ToolTip="Выбрать страну"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button ToolTip="Перейти к добавлению нового отеля" FontFamily="Comic Sans MS" FontSize="14" Content="Добавить" Grid.Row="3" HorizontalAlignment="Left" Name="BtnAdd" Click="BtnAdd_Click" Margin="10,10,0,10" Width="130"></Button>
+        <Button ToolTip="Перейти к добавлению нового тура" FontFamily="Comic Sans MS" FontSize="14" Content="Добавить" Grid.Row="3" HorizontalAlignment="Left" Name="BtnAdd" Click="BtnAdd_Click" Margin="10,10,0,10" Width="130"></Button>
         <Button x:Name="BtnTours" Content="Закрыть" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Comic Sans MS" FontSize="18" Width="120"
                 Click="BtnTours_Click" Height="27" RenderTransformOrigin="0.5,0.5" Grid.Row="3"/>
-        <Button ToolTip="Нажмите для удаления выбранных отелей" FontFamily="Comic Sans MS" FontSize="14" Content="Удалить" Grid.Row="3" HorizontalAlignment="Right" Name ="BtnDelete" Click="BtnDelete_Click" Margin="0,10,10.4,10" Width="120"></Button>
+        <Button ToolTip="Нажмите для удаления выбранных туров" FontFamily="Comic Sans MS" FontSize="14" Content="Удалить" Grid.Row="3" HorizontalAlignment="Right" Name ="BtnDelete" Click="BtnDelete_Click" Margin="0,10,10.4,10" Width="120"></Button>
 
         <Grid Background="#445c93" Grid.Row="4" Margin="0,0,0.4,0"/>
     </Grid>

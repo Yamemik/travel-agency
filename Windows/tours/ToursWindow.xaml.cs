@@ -11,10 +11,10 @@ namespace TravelAgency.Windows
         {
             InitializeComponent();
 
-            QueryingTours();
+            QueryingEntities();
         }
 
-        private void QueryingTours()
+        private void QueryingEntities()
         {
             using (TravelDBContext db = new())
             {
@@ -22,7 +22,7 @@ namespace TravelAgency.Windows
                     .Include(c => c.Country)
                     .Include(c => c.Hotel);
 
-                DGridTours.ItemsSource = tours?.ToList<Tour>();
+                DGrid.ItemsSource = tours?.ToList<Tour>();
             }
         }
 
@@ -41,7 +41,7 @@ namespace TravelAgency.Windows
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-            var toursForRemoving = DGridTours.SelectedItems.Cast<Tour>().ToList();
+            var toursForRemoving = DGrid.SelectedItems.Cast<Tour>().ToList();
             if (MessageBox.Show($"Вы точно хотите удалить следущие {toursForRemoving.Count()} элемент?", "Внимание",
                 MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
@@ -65,7 +65,7 @@ namespace TravelAgency.Windows
                     }
                     MessageBox.Show("Данные удалены");
 
-                    QueryingTours();
+                    QueryingEntities();
                 }
                 catch (Exception ex)
                 {

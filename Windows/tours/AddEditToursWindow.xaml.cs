@@ -1,31 +1,26 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Linq;
 using System.Windows;
 
 namespace TravelAgency.Windows.tours
 {
     public partial class AddEditToursWindow : Window
     {
-        private Tour _currentTour = new Tour();
-        public Hotel selectedHotel { get; set; }
-
+        private Tour _currentData = new Tour();
         public AddEditToursWindow(Tour? selectedTour)
         {
             InitializeComponent();
 
             if (selectedTour != null)
             {
-                _currentTour = selectedTour;
+                _currentData = selectedTour;
 
-                //current data
-
-                dPstartDate.SelectedDate = _currentTour.StartDate.ToDateTime(TimeOnly.MinValue);
-                dPfinishDate.SelectedDate = _currentTour.FinishDate.ToDateTime(TimeOnly.MinValue);
+                dPstartDate.SelectedDate = _currentData.StartDate.ToDateTime(TimeOnly.MinValue);
+                dPfinishDate.SelectedDate = _currentData.FinishDate.ToDateTime(TimeOnly.MinValue);
 
                 using (TravelDBContext db = new())
                 {
                     IQueryable<Flight>? flights = db.Flights
-                        .Where(c => c.Id == _currentTour.DepartureFlightId)
+                        .Where(c => c.Id == _currentData.DepartureFlightId)
                         .Include(c => c.Airline)
                         .Include(c => c.DestinationCountry);
 
@@ -33,7 +28,7 @@ namespace TravelAgency.Windows.tours
                     departureFlight.Text = fly.Airline.Name + "-" + fly.DestinationCountry.Name;
 
                     flights = db.Flights
-                        .Where(c => c.Id == _currentTour.ArrivalFlightId)
+                        .Where(c => c.Id == _currentData.ArrivalFlightId)
                         .Include(c => c.Airline)
                         .Include(c => c.DestinationCountry);
 
@@ -49,23 +44,7 @@ namespace TravelAgency.Windows.tours
                 dPfinishDate.SelectedDate = thisDay;
             }
 
-            DataContext = _currentTour;
-        }
-
-        private void QueryingHotels()
-        {
-            using (TravelDBContext db = new())
-            {
-                IQueryable<Hotel>? hotels = db.Hotels;                
-            }
-        }
-
-        private void QueryingCountries()
-        {
-            using (TravelDBContext db = new())
-            {
-                IQueryable<Country>? countries = db.Countries;
-            }
+            DataContext = _currentData;
         }
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
@@ -74,22 +53,22 @@ namespace TravelAgency.Windows.tours
             {
                 try
                 {
-                    if (_currentTour.Id == 0)
+                    if (_currentData.Id == 0)
                     {
-                        db.Tours.Add(_currentTour);
+                        db.Tours.Add(_currentData);
                     }
                     else
                     {
                         Tour updateTour = db.Tours
-                            .First(c => c.Id == _currentTour.Id);
+                            .First(c => c.Id == _currentData.Id);
 
-                        updateTour.Hotel = _currentTour.Hotel;
-                        updateTour.Country = _currentTour.Country;
-                        updateTour.DepartureFlightId = _currentTour.DepartureFlightId;
-                        updateTour.ArrivalFlightId = _currentTour.ArrivalFlightId;
-                        updateTour.StartDate = _currentTour.StartDate;
-                        updateTour.FinishDate = _currentTour.FinishDate;
-                        updateTour.CompanyServiceCost = _currentTour.CompanyServiceCost;
+                        updateTour.Hotel = _currentData.Hotel;
+                        updateTour.Country = _currentData.Country;
+                        updateTour.DepartureFlight = _currentData.DepartureFlight;
+                        updateTour.ArrivalFlight = _currentData.ArrivalFlight;
+                        updateTour.StartDate = _currentData.StartDate;
+                        updateTour.FinishDate = _currentData.FinishDate;
+                        updateTour.CompanyServiceCost = _currentData.CompanyServiceCost;
                     }
 
                     // сохранение отслеживаемых изменений в базе данных
@@ -112,29 +91,53 @@ namespace TravelAgency.Windows.tours
             var response = MessageBox.Show("Закрыть?", "Закрыть", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             if (response == MessageBoxResult.Yes)
             {
-                ToursWindow tourWindow = new ToursWindow();
-                tourWindow.Show();
+                ToursWindow win = new ToursWindow();
+                win.Show();
                 this.Close();
             }
         }
 
         private void CMHotels_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            HotelWindow hotelWindow = new HotelWindow(true);
-            hotelWindow.Owner = this;
-            hotelWindow.ShowDialog();            
+            HotelWindow win = new HotelWindow(true);
+            win.Owner = this;
+            win.ShowDialog();
 
-            _currentTour.Hotel = hotelWindow.selectedHotel;
-            _currentTour.HotelId = hotelWindow.selectedHotel.Id;
+            var select = win.selectedHotel;
 
-            txtHotels.Text = hotelWindow.selectedHotel.Name;
+            if (select is not null)
+            {
+                _currentData.Hotel = select;
+                _currentData.HotelId = select.Id;
+                txtHotels.Text = select.Name;
+            }            
         }
 
         private void CMCountry_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            //CountryWindow hotelWindow = new CountryWindow();
-            //hotelWindow.Owner = this;
-            //hotelWindow.Show();
+            CountriesWindow win = new CountriesWindow(true);
+            win.Owner = this;
+            win.ShowDialog();
+
+            var select = win.selectedRow;
+
+            if (select is not null)
+            {
+                _currentData.Country = select;
+                _currentData.CountryId = select.Id;
+                txtCountry.Text = select.Name;
+            }
+
+        }
+
+        private void DeparFly_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void ArrivalFly_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+
         }
     }
 }

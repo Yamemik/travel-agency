@@ -1,18 +1,18 @@
-﻿using System.Windows;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Windows;
 using System.Windows.Controls;
+using TravelAgency.Windows.tours;
 
-
-namespace TravelAgency.Windows
+namespace TravelAgency.Windows.flights
 {
-    public partial class HotelWindow : Window
+    public partial class FlightsWindow : Window
     {
-        public Hotel? selectedHotel { get; set; }
-
-        public HotelWindow(bool isSelect = false)
+        public Flight? selectedRow { get; set; }
+        public FlightsWindow(bool isSelect = false)
         {
             InitializeComponent();
 
-            QueryingHotels();
+            QueryingEntities();
 
             if (isSelect)
             {
@@ -29,54 +29,59 @@ namespace TravelAgency.Windows
             }
         }
 
-        private void QueryingHotels()
+        private void QueryingEntities()
         {
             using (TravelDBContext db = new())
             {
-                IQueryable<Hotel>? hotels = db.Hotels;
+                IQueryable<Flight>? entity = db.Flights?
+                    .Include(c => c.Airline)
+                    .Include(c => c.DepartureCountry)
+                    .Include(c => c.DestinationCountry);
 
-                DGridHotels.ItemsSource = hotels.ToList<Hotel>();
+                DGrid.ItemsSource = entity?.ToList<Flight>();
             }
         }
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-            AddEditPageHotel addEditPage = new AddEditPageHotel(((Button)sender).DataContext as Hotel);
+            AddEditToursWindow addEditPage = new AddEditToursWindow(((Button)sender).DataContext as Tour);
             addEditPage.Show();
+            this.Close();
         }
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            AddEditPageHotel addEditPage = new AddEditPageHotel(null!);
+            AddEditToursWindow addEditPage = new AddEditToursWindow(null!);
             addEditPage.Show();
+            this.Close();
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-            var hotelsForRemoving = DGridHotels.SelectedItems.Cast<Hotel>().ToList();
-            if (MessageBox.Show($"Вы точно хотите удалить следущие {hotelsForRemoving.Count()} элемент?", "Внимание",
+            var toursForRemoving = DGrid.SelectedItems.Cast<Tour>().ToList();
+            if (MessageBox.Show($"Вы точно хотите удалить следущие {toursForRemoving.Count()} элемент?", "Внимание",
                 MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 try
                 {
                     using (TravelDBContext db = new())
                     {
-                        IQueryable<Hotel>? hotels = db.Hotels
-                            .Where(c => c.Id == hotelsForRemoving[0].Id);
+                        IQueryable<Tour>? tours = db.Tours
+                            .Where(c => c.Id == toursForRemoving[0].Id);
 
-                        if (hotels is null)
+                        if (tours is null)
                         {
-                            MessageBox.Show("No hotels found to delete.");
+                            MessageBox.Show("No tours found to delete.");
                             return;
                         }
                         else
                         {
-                            db.Hotels.RemoveRange(hotels);
+                            db.Tours.RemoveRange(tours);
                         }
                         int affected = db.SaveChanges();
                     }
                     MessageBox.Show("Данные удалены");
 
-                    QueryingHotels();
+                    QueryingEntities();
                 }
                 catch (Exception ex)
                 {
@@ -92,7 +97,7 @@ namespace TravelAgency.Windows
 
         private void BtnSelect_Click(object sender, RoutedEventArgs e)
         {
-            selectedHotel = (Hotel)((Button)sender).DataContext;            
+            selectedRow = (Flight)((Button)sender).DataContext;
 
             this.Close();
         }
