@@ -39,9 +39,9 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="120"/>
+            <RowDefinition Height="100"/>
             <RowDefinition/>
-            <RowDefinition Height="80"/>
+            <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
 
         <Grid Background="SlateGray" Grid.ColumnSpan="2"/>

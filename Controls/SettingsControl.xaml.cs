@@ -2,6 +2,7 @@
 using System.Windows.Controls;
 using TravelAgency.Windows;
 using TravelAgency.Windows.airlines;
+using TravelAgency.Windows.customers;
 using TravelAgency.Windows.flights;
 using TravelAgency.Windows.users;
 
@@ -65,7 +66,9 @@ namespace TravelAgency.Controls
 
         private void BtnCustomers_Click(object sender, RoutedEventArgs e)
         {
-
+            CustomersWindow win = new CustomersWindow();
+            win.Owner = this.mama;
+            win.ShowDialog();
         }
     }
 }

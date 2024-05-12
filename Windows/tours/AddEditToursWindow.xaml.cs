@@ -120,7 +120,7 @@ namespace TravelAgency.Windows.tours
 
             if (select is not null)
             {
-                _currentData.Hotel = null;
+                _currentData.Hotel = null!;
                 _currentData.HotelId = select.Id;
                 txtHotels.Text = select.Name;
             }            
@@ -136,7 +136,7 @@ namespace TravelAgency.Windows.tours
 
             if (select is not null)
             {
-                _currentData.Country = null;
+                _currentData.Country = null!;
                 _currentData.CountryId = select.Id;
                 txtCountry.Text = select.Name;
             }
