@@ -43,11 +43,13 @@ namespace TravelAgency.Windows
         {
             AddEditPageHotel addEditPage = new AddEditPageHotel(((Button)sender).DataContext as Hotel);
             addEditPage.Show();
+            this.Close();
         }
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
             AddEditPageHotel addEditPage = new AddEditPageHotel(null!);
             addEditPage.Show();
+            this.Close();
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)

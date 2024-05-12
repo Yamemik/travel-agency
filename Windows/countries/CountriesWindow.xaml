@@ -26,20 +26,20 @@
 
         <DataGrid x:Name="DGrid" AutoGenerateColumns="False" IsReadOnly="True" Margin="0,1,0.4,0" Grid.RowSpan="2" Grid.Row="1" FontFamily="Comic Sans MS" FontWeight="Bold">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Номер" Binding="{Binding Id}" Width="*" FontFamily="Comic Sans MS" FontSize="14"></DataGridTextColumn>
+                <DataGridTextColumn Header="Номер" Binding="{Binding Id}" Width="100" FontFamily="Comic Sans MS" FontSize="14"></DataGridTextColumn>
                 <DataGridTextColumn Header="Название" Binding="{Binding Name}" Width="*" FontFamily="Comic Sans MS" FontSize="14"></DataGridTextColumn>
-                <DataGridTemplateColumn Width="auto" x:Name="BtnEditColumn">
+                <DataGridTemplateColumn Width="20" x:Name="BtnEditColumn">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Content="*" ToolTip="Перейти к редактированию"  Name="BtnEdit" Click="BtnEdit_Click" Width="50"
+                            <Button Content="*" ToolTip="Перейти к редактированию"  Name="BtnEdit" Click="BtnEdit_Click"
                                     FontFamily="Comic Sans MS" FontSize="14"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Width="auto" x:Name="BtnSelectColumn">
+                <DataGridTemplateColumn Width="20" x:Name="BtnSelectColumn">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Content="+" Name="BtnSelect" Click="BtnSelect_Click" Width="50" FontFamily="Comic Sans MS" FontSize="14"
+                            <Button Content="+" Name="BtnSelect" Click="BtnSelect_Click" FontFamily="Comic Sans MS" FontSize="14"
                                     Background="#fac716" ToolTip="Выбрать страну"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

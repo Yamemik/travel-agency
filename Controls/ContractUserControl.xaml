@@ -37,7 +37,7 @@
         <TextBlock Text="Продажи" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" FontFamily="Comic Sans MS" FontSize="24"
                    Width="200" Height="32"/>
 
-        <!--<TextBlock Text="Выберите фильтр: " FontFamily="Comic Sans MS" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,0,0" Grid.Row="1" Height="20" Width="196"></TextBlock>
+        <TextBlock Text="Выберите фильтр: " FontFamily="Comic Sans MS" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,0,0" Grid.Row="1" Height="20" Width="196"></TextBlock>
         <ComboBox x:Name="ComboPrice"  FontFamily="Comic Sans MS" FontSize="14" SelectionChanged="ComboPrice_SelectionChanged" Margin="5,30,0,0"
                   Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="183" Height="24">
             <ComboBoxItem Content="По умолчанию" IsSelected="True"/>
@@ -47,29 +47,22 @@
 
         <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="206,5,186,0" Grid.Row="1">
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Введите текст для поиска: " Width="175" TextAlignment="Right" FontFamily="Comic Sans MS" FontSize="14"/>
-                <TextBox Width="225" x:Name="TboxSearch" TextChanged="TboxSearch_TextChanged" FontFamily="Comic Sans MS" FontSize="14"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Выберите тип: " Width="175" TextAlignment="Right" FontFamily="Comic Sans MS" FontSize="14"/>
+                <TextBlock Text="Выберите дату: " Width="175" TextAlignment="Right" FontFamily="Comic Sans MS" FontSize="14"/>
                 <ComboBox Width="225" x:Name="ComboType" SelectionChanged="ComboType_SelectionChanged" DisplayMemberPath="Name" FontFamily="Comic Sans MS" FontSize="14"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <CheckBox x:Name="ChecActual" Checked="ChecActual_Checked" Unchecked="ChecActual_Checked" FontFamily="Comic Sans MS" FontSize="14" Content="только актуальные туры" HorizontalAlignment="Right" HorizontalContentAlignment="Right" Height="21" Width="184" RenderTransformOrigin="0.952,0.597"/>
-            </StackPanel>
-        </WrapPanel>-->
+        </WrapPanel>
 
         <DataGrid Grid.Row="2" x:Name="DGridContracts" Background="SlateGray" AutoGenerateColumns="False" CanUserAddRows="False"
-                  AlternatingRowBackground="DarkGray" RowBackground="LightGray" IsReadOnly="True">
+                  AlternatingRowBackground="DarkGray" RowBackground="LightGray" IsReadOnly="True" Width="500" Margin="0,20,0,0">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Номер" Binding="{Binding Id}"/>
-                <DataGridTextColumn Header="Дата заключения" Binding="{Binding DateOfConclusion,StringFormat={}{0:dd/MM/yyyy}}"/>
-                <DataGridTextColumn Header="Номер маршрута" Binding="{Binding Tour.Id}"/>
+                <DataGridTextColumn Header="Дата заключения"  Binding="{Binding DateOfConclusion,StringFormat={}{0:dd/MM/yyyy}}"/>
+                <DataGridTextColumn Header="Номер маршрута" Width="*" Binding="{Binding Tour.Id}"/>
                 <DataGridTextColumn Header="Стоимость услуг компании" Binding="{Binding Tour.CompanyServiceCost}"/>
-                <DataGridTemplateColumn Width="auto">
+                <DataGridTemplateColumn Width="20">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Content="Открыть" ToolTip="Перейти к просмотру данного заказа"  Name="BtnOpen" Click="BtnOpen_Click"
+                            <Button Content=">" ToolTip="Перейти к просмотру данного заказа"  Name="BtnOpen" Click="BtnOpen_Click"
                                     Width="150" FontFamily="Comic Sans MS" FontSize="14" Background="#606770"></Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
@@ -77,7 +70,7 @@
                 <DataGridTemplateColumn Width="auto">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Content="Редактировать" ToolTip="Перейти к редактированию данного заказа"  Name="BtnEdit" Click="BtnEdit_Click"
+                            <Button Content="*" ToolTip="Перейти к редактированию данного заказа"  Name="BtnEdit" Click="BtnEdit_Click"
                                     Width="150" FontFamily="Comic Sans MS" FontSize="14" Background="#606770"></Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

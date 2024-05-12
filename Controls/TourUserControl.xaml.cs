@@ -15,7 +15,7 @@ namespace TravelAgency.Controls
 
             DataContext = this;
 
-            QueryingTours();
+            QueryingEntity();
         }
 
         MainWindow? win;
@@ -25,18 +25,15 @@ namespace TravelAgency.Controls
             get { return win!; }
         }
 
-        private void QueryingTours()
+        private void QueryingEntity()
         {
             using (TravelDBContext db = new())
             {
                 // запрос на получение всех категорий и связанных с ними продуктов
-                IQueryable<Tour>? tours = db.Tours
-                    .Include(c => c.Country)
-                    .Include(c => c.Hotel)
-                    .Include(c => c.ArrivalFlight)
-                    .Include(c => c.DepartureFlight);
+                IQueryable<Excursion>? ent = db.Excursions
+                    .Include(c => c.Country);
 
-                dg_tours.ItemsSource = tours.ToList<Tour>();
+                DataGridEx.ItemsSource = ent.ToList<Excursion>();
             }
         }
 
@@ -51,11 +48,6 @@ namespace TravelAgency.Controls
 
         }
         private void ComboType_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            UpdateTours();
-        }
-
-        private void ChecActual_Checked(object sender, RoutedEventArgs e)
         {
             UpdateTours();
         }

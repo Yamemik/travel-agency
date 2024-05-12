@@ -89,21 +89,11 @@ namespace TravelAgency.Controls
             
         }
 
-        private void TboxSearch_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            UpdateTours();
-        }
-
         private void UpdateTours()
         {
 
         }
         private void ComboType_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            UpdateTours();
-        }
-
-        private void ChecActual_Checked(object sender, RoutedEventArgs e)
         {
             UpdateTours();
         }

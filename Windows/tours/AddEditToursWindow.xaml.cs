@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Windows;
+using TravelAgency.Windows.flights;
 
 namespace TravelAgency.Windows.tours
 {
@@ -25,7 +27,7 @@ namespace TravelAgency.Windows.tours
                         .Include(c => c.DestinationCountry);
 
                     var fly = flights.ToList<Flight>().First();
-                    departureFlight.Text = fly.Airline.Name + "-" + fly.DestinationCountry.Name;
+                    txtDepartureFlight.Text = fly.Airline.Name + "-" + fly.DestinationCountry.Name;
 
                     flights = db.Flights
                         .Where(c => c.Id == _currentData.ArrivalFlightId)
@@ -33,7 +35,7 @@ namespace TravelAgency.Windows.tours
                         .Include(c => c.DestinationCountry);
 
                     fly = flights.ToList<Flight>().First();
-                    arrivalFlight.Text = fly.Airline.Name + "-" + fly.DestinationCountry.Name;
+                    txtArrivalFlight.Text = fly.Airline.Name + "-" + fly.DestinationCountry.Name;
                 }
             }
             else
@@ -53,8 +55,19 @@ namespace TravelAgency.Windows.tours
             {
                 try
                 {
+                    if (dPstartDate.SelectedDate.HasValue && dPfinishDate.SelectedDate.HasValue)
+                    {
+                        DateTime dateTime = dPstartDate.SelectedDate.Value;
+                        _currentData.StartDate = new DateOnly(dateTime.Year, dateTime.Month, dateTime.Day);
+                        dateTime = dPfinishDate.SelectedDate.Value;
+                        _currentData.FinishDate = new DateOnly(dateTime.Year, dateTime.Month, dateTime.Day);
+                    }
+
                     if (_currentData.Id == 0)
                     {
+
+                        _currentData.NumberOfFreeSeats = 1;                        
+
                         db.Tours.Add(_currentData);
                     }
                     else
@@ -62,10 +75,10 @@ namespace TravelAgency.Windows.tours
                         Tour updateTour = db.Tours
                             .First(c => c.Id == _currentData.Id);
 
-                        updateTour.Hotel = _currentData.Hotel;
-                        updateTour.Country = _currentData.Country;
-                        updateTour.DepartureFlight = _currentData.DepartureFlight;
-                        updateTour.ArrivalFlight = _currentData.ArrivalFlight;
+                        updateTour.HotelId = _currentData.HotelId;
+                        updateTour.CountryId = _currentData.CountryId;
+                        updateTour.DepartureFlightId = _currentData.DepartureFlightId;
+                        updateTour.ArrivalFlightId = _currentData.ArrivalFlightId;
                         updateTour.StartDate = _currentData.StartDate;
                         updateTour.FinishDate = _currentData.FinishDate;
                         updateTour.CompanyServiceCost = _currentData.CompanyServiceCost;
@@ -107,7 +120,7 @@ namespace TravelAgency.Windows.tours
 
             if (select is not null)
             {
-                _currentData.Hotel = select;
+                _currentData.Hotel = null;
                 _currentData.HotelId = select.Id;
                 txtHotels.Text = select.Name;
             }            
@@ -123,7 +136,7 @@ namespace TravelAgency.Windows.tours
 
             if (select is not null)
             {
-                _currentData.Country = select;
+                _currentData.Country = null;
                 _currentData.CountryId = select.Id;
                 txtCountry.Text = select.Name;
             }
@@ -132,12 +145,32 @@ namespace TravelAgency.Windows.tours
 
         private void DeparFly_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+            FlightsWindow win = new FlightsWindow(true);
+            win.Owner = this;
+            win.ShowDialog();
 
+            var select = win.selectedRow;
+
+            if (select is not null)
+            {
+                _currentData.DepartureFlightId = select.Id;
+                txtDepartureFlight.Text = select.Airline.Name + "-" + select.DestinationCountry.Name;
+            }
         }
 
         private void ArrivalFly_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+            FlightsWindow win = new FlightsWindow(true);
+            win.Owner = this;
+            win.ShowDialog();
 
+            var select = win.selectedRow;
+
+            if (select is not null)
+            {
+                _currentData.ArrivalFlightId = select.Id;
+                txtArrivalFlight.Text = select.Airline.Name + "-" + select.DestinationCountry.Name;
+            }
         }
     }
 }

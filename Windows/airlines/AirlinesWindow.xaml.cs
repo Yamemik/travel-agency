@@ -1,16 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace TravelAgency.Windows.airlines
 {
@@ -50,18 +39,20 @@ namespace TravelAgency.Windows.airlines
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-            AddEditPageHotel addEditPage = new AddEditPageHotel(((Button)sender).DataContext as Hotel);
-            addEditPage.Show();
+            AddEditAirlinesWindow addEdit = new AddEditAirlinesWindow(((Button)sender).DataContext as Airline);
+            addEdit.Show();
+            this.Close();
         }
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            AddEditPageHotel addEditPage = new AddEditPageHotel(null!);
-            addEditPage.Show();
+            AddEditAirlinesWindow addEdit = new AddEditAirlinesWindow(null!);
+            addEdit.Show();
+            this.Close();
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-            var rowForRemoving = DGrid.SelectedItems.Cast<Country>().ToList();
+            var rowForRemoving = DGrid.SelectedItems.Cast<Airline>().ToList();
             if (MessageBox.Show($"Вы точно хотите удалить следущие {rowForRemoving.Count()} элемент?", "Внимание",
                 MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
@@ -69,7 +60,7 @@ namespace TravelAgency.Windows.airlines
                 {
                     using (TravelDBContext db = new())
                     {
-                        IQueryable<Country>? entities = db.Countries
+                        IQueryable<Airline>? entities = db.Airlines
                             .Where(c => c.Id == rowForRemoving[0].Id);
 
                         if (entities is null)
@@ -79,7 +70,7 @@ namespace TravelAgency.Windows.airlines
                         }
                         else
                         {
-                            db.Countries.RemoveRange(entities);
+                            db.Airlines.RemoveRange(entities);
                         }
                         int affected = db.SaveChanges();
                     }

@@ -57,25 +57,25 @@ namespace TravelAgency.Windows.flights
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-            var toursForRemoving = DGrid.SelectedItems.Cast<Tour>().ToList();
-            if (MessageBox.Show($"Вы точно хотите удалить следущие {toursForRemoving.Count()} элемент?", "Внимание",
+            var rowsForRemoving = DGrid.SelectedItems.Cast<Flight>().ToList();
+            if (MessageBox.Show($"Вы точно хотите удалить следущие {rowsForRemoving.Count()} элемент?", "Внимание",
                 MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 try
                 {
                     using (TravelDBContext db = new())
                     {
-                        IQueryable<Tour>? tours = db.Tours
-                            .Where(c => c.Id == toursForRemoving[0].Id);
+                        IQueryable<Flight>? ent = db.Flights
+                            .Where(c => c.Id == rowsForRemoving[0].Id);
 
-                        if (tours is null)
+                        if (ent is null)
                         {
                             MessageBox.Show("No tours found to delete.");
                             return;
                         }
                         else
                         {
-                            db.Tours.RemoveRange(tours);
+                            db.Flights.RemoveRange(ent);
                         }
                         int affected = db.SaveChanges();
                     }

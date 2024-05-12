@@ -26,16 +26,16 @@
 
         <DataGrid x:Name="DGridUsers" AutoGenerateColumns="False" IsReadOnly="True" Margin="0,1,0.4,0" Grid.RowSpan="2" Grid.Row="1" FontFamily="Comic Sans MS" FontWeight="Bold">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Номер" Binding="{Binding Id}" Width="*" FontFamily="Comic Sans MS" FontSize="14"></DataGridTextColumn>
+                <DataGridTextColumn Header="Номер" Binding="{Binding Id}" Width="100" FontFamily="Comic Sans MS" FontSize="14"></DataGridTextColumn>
                 <DataGridTextColumn Header="Фамилия" Binding="{Binding Surname}" Width="*" FontFamily="Comic Sans MS" FontSize="14"></DataGridTextColumn>
                 <DataGridTextColumn Header="Имя" Binding="{Binding Name}" Width="*" FontFamily="Comic Sans MS" FontSize="14"></DataGridTextColumn>
                 <DataGridTextColumn Header="Отчество" Binding="{Binding Patronymic}" Width="*" FontFamily="Comic Sans MS" FontSize="14"></DataGridTextColumn>
                 <DataGridTextColumn Header="Роль" Binding="{Binding Role}" Width="*" FontFamily="Comic Sans MS" FontSize="14"></DataGridTextColumn>
                 <DataGridTextColumn Header="Логин" Binding="{Binding Login}" Width="*" FontFamily="Comic Sans MS" FontSize="14"></DataGridTextColumn>
-                <DataGridTemplateColumn Width="auto">
+                <DataGridTemplateColumn Width="20">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Content="Редактировать" ToolTip="Перейти к редактированию пользователя"  Name="BtnEdit" Click="BtnEdit_Click" Width="150" FontFamily="Comic Sans MS" FontSize="14" Background="DodgerBlue"></Button>
+                            <Button Content="*" ToolTip="Перейти к редактированию пользователя"  Name="BtnEdit" Click="BtnEdit_Click" FontFamily="Comic Sans MS" FontSize="14"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

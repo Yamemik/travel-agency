@@ -24,13 +24,13 @@
     <Grid Margin="0,0,0,-1">
         <Grid.RowDefinitions>
             <RowDefinition Height="120"></RowDefinition>
-            <RowDefinition Height="36*"></RowDefinition>
+            <RowDefinition Height="40*"></RowDefinition>
             <RowDefinition Height="193*"/>
             <RowDefinition Height="12*"/>
         </Grid.RowDefinitions>
 
         <Grid Background="SlateGray"/>
-        <TextBlock Text="Маршруты" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" FontFamily="Comic Sans MS" FontSize="24"
+        <TextBlock Text="Экскурсии" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" FontFamily="Comic Sans MS" FontSize="24"
                    Width="200" Height="32"/>
 
         <TextBlock Text="Выберите фильтр для цены: " FontFamily="Comic Sans MS" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,0,0" Grid.Row="1" Height="20" Width="196"></TextBlock>
@@ -47,30 +47,24 @@
                 <TextBox Width="225" x:Name="TboxSearch" TextChanged="TboxSearch_TextChanged" FontFamily="Comic Sans MS" FontSize="14"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Выберите тип: " Width="175" TextAlignment="Right" FontFamily="Comic Sans MS" FontSize="14"/>
+                <TextBlock Text="Выберите страну: " Width="175" TextAlignment="Right" FontFamily="Comic Sans MS" FontSize="14"/>
                 <ComboBox Width="225" x:Name="ComboType" SelectionChanged="ComboType_SelectionChanged" DisplayMemberPath="Name" FontFamily="Comic Sans MS" FontSize="14"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <CheckBox x:Name="ChecActual" Checked="ChecActual_Checked" Unchecked="ChecActual_Checked" FontFamily="Comic Sans MS" FontSize="14" Content="только актуальные туры" HorizontalAlignment="Right" HorizontalContentAlignment="Right" Height="21" Width="184" RenderTransformOrigin="0.952,0.597"/>
             </StackPanel>
         </WrapPanel>
 
         <TextBlock x:Name="TotalTourPrice" Text="[Стоимость туров]" FontFamily="Comic Sans MS" FontSize="14" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,5,0,0" Grid.Row="1" Width="181" Height="68" Grid.RowSpan="2"></TextBlock>
 
-        <DataGrid Grid.Row="2" x:Name="dg_tours" Background="SlateGray" AutoGenerateColumns="False" CanUserAddRows="False"
-                  AlternatingRowBackground="DarkGray" RowBackground="LightGray" IsReadOnly="True">
+        <DataGrid Grid.Row="2" x:Name="DataGridEx" Background="SlateGray" AutoGenerateColumns="False" CanUserAddRows="False"
+                  AlternatingRowBackground="DarkGray" RowBackground="LightGray" IsReadOnly="True" Width="500" Margin="0,30,0,0">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Номер" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Локация" Binding="{Binding Location}" Width="*"/>
+                <DataGridTextColumn Header="Стоимость" Binding="{Binding CompanyPrice}"/>
                 <DataGridTextColumn Header="Страна" Binding="{Binding Country.Name}"/>
-                <DataGridTextColumn Header="Дата отправки" Binding="{Binding StartDate,StringFormat={}{0:dd/MM/yyyy}}"/>
-                <DataGridTextColumn Header="Дата возвращения" Binding="{Binding FinishDate,StringFormat={}{0:dd/MM/yyyy}}"/>
-                <DataGridTextColumn Header="Стоимость услуг компании" Binding="{Binding CompanyServiceCost}"/>
-                <DataGridTextColumn Header="Количество свободных мест" Binding="{Binding NumberOfFreeSeats}"/>
-                <DataGridTextColumn Header="Отель" Binding="{Binding Hotel.Name}"/>
-                <DataGridTemplateColumn Width="auto">
+                <DataGridTemplateColumn Width="20">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Content="Подробнее" Click="btnAbout_click" FontFamily="Comic Sans MS" Background="#606770"/>
+                            <Button Content=">" Click="btnAbout_click" FontFamily="Comic Sans MS" Background="#606770"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
