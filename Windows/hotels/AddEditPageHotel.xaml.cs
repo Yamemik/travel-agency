@@ -57,8 +57,6 @@ namespace TravelAgency.Windows
                     db.SaveChanges();
                     MessageBox.Show("Информация сохранена!");
 
-                    HotelWindow hotelWindow = new HotelWindow();
-                    hotelWindow.Show();
                     this.Close();
                 }
                 catch (Exception ex)
@@ -74,8 +72,6 @@ namespace TravelAgency.Windows
             var response = MessageBox.Show("Закрыть?", "Закрыть", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             if (response == MessageBoxResult.Yes)
             {
-                HotelWindow hotelWindow = new HotelWindow();
-                hotelWindow.Show();
                 this.Close();
             }
         }

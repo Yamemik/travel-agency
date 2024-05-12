@@ -28,7 +28,7 @@
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="Height" Value="32"/>
-            <Setter Property="Width" Value="200"/>
+            <Setter Property="Width" Value="220"/>
             <Setter Property="Margin" Value="0,10,10,10"/>
         </Style>
     </UserControl.Resources>
@@ -54,6 +54,7 @@
         <StackPanel Grid.Row="1" Margin="0,10,0,0">
             <Button x:Name="BtnTours" Content="Туры" ToolTip="Перейти к форме туров" Click="BtnTours_Click"/>
             <Button x:Name="BtnFlights" Content="Авиарейсы" ToolTip="Перейти к форме авиарейсов" Click="BtnFlights_Click"/>
+            <Button x:Name="BtnVisited" Content="Посещенные экскурсии" ToolTip="Перейти к форме авиарейсов" Click="BtnVisited_Click"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="1" Margin="0,10,0,0">

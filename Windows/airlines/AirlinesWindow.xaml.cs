@@ -40,14 +40,14 @@ namespace TravelAgency.Windows.airlines
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
             AddEditAirlinesWindow addEdit = new AddEditAirlinesWindow(((Button)sender).DataContext as Airline);
-            addEdit.Show();
-            this.Close();
+            addEdit.ShowDialog();
+            QueryingEntities();
         }
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
             AddEditAirlinesWindow addEdit = new AddEditAirlinesWindow(null!);
-            addEdit.Show();
-            this.Close();
+            addEdit.ShowDialog();
+            QueryingEntities();
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)

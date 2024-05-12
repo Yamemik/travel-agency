@@ -12,7 +12,7 @@ namespace TravelAgency.Windows
         {
             InitializeComponent();
 
-            QueryingHotels();
+            QueryingEntities();
 
             if (isSelect)
             {
@@ -29,7 +29,7 @@ namespace TravelAgency.Windows
             }
         }
 
-        private void QueryingHotels()
+        private void QueryingEntities()
         {
             using (TravelDBContext db = new())
             {
@@ -42,14 +42,14 @@ namespace TravelAgency.Windows
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
             AddEditPageHotel addEditPage = new AddEditPageHotel(((Button)sender).DataContext as Hotel);
-            addEditPage.Show();
-            this.Close();
+            addEditPage.ShowDialog();
+            QueryingEntities();
         }
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
             AddEditPageHotel addEditPage = new AddEditPageHotel(null!);
-            addEditPage.Show();
-            this.Close();
+            addEditPage.ShowDialog();
+            QueryingEntities();
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
@@ -78,7 +78,7 @@ namespace TravelAgency.Windows
                     }
                     MessageBox.Show("Данные удалены");
 
-                    QueryingHotels();
+                    QueryingEntities();
                 }
                 catch (Exception ex)
                 {

@@ -40,8 +40,6 @@ namespace TravelAgency.Windows.countries
                     db.SaveChanges();
                     MessageBox.Show("Информация сохранена!");
 
-                    CountriesWindow win = new CountriesWindow();
-                    win.Show();
                     this.Close();
                 }
                 catch (Exception ex)
@@ -56,8 +54,6 @@ namespace TravelAgency.Windows.countries
             var response = MessageBox.Show("Закрыть?", "Закрыть", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             if (response == MessageBoxResult.Yes)
             {
-                CountriesWindow win = new CountriesWindow();
-                win.Show();
                 this.Close();
             }
         }

@@ -40,14 +40,14 @@ namespace TravelAgency.Windows.customers
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
             AddEditCustomersWindow addEdit = new AddEditCustomersWindow(((Button)sender).DataContext as Customer);
-            addEdit.Show();
-            this.Close();
+            addEdit.ShowDialog();
+            QueryingEntities();
         }
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
             AddEditCustomersWindow addEdit = new AddEditCustomersWindow(null!);
-            addEdit.Show();
-            this.Close();
+            addEdit.ShowDialog();
+            QueryingEntities();
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)

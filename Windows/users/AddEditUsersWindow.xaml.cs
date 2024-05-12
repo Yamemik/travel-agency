@@ -63,8 +63,6 @@ namespace TravelAgency.Windows.users
                     db.SaveChanges();
                     MessageBox.Show("Информация сохранена!");
 
-                    UsersWindow userWindow = new UsersWindow();
-                    userWindow.Show();
                     this.Close();
                 }
                 catch (Exception ex)
@@ -80,8 +78,6 @@ namespace TravelAgency.Windows.users
             var response = MessageBox.Show("Закрыть?", "Закрыть", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             if (response == MessageBoxResult.Yes)
             {
-                UsersWindow userWindow = new UsersWindow();
-                userWindow.Show();
                 this.Close(); 
             }
         }

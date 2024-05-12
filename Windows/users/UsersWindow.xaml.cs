@@ -9,11 +9,11 @@ namespace TravelAgency.Windows.users
         {
             InitializeComponent();
 
-            QueryingUsers();
+            QueryingEntities();
 
         }
 
-        private void QueryingUsers()
+        private void QueryingEntities()
         {
             using (TravelDBContext db = new())
             {
@@ -26,14 +26,14 @@ namespace TravelAgency.Windows.users
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
             AddEditUsersWindow addEditPage = new AddEditUsersWindow(((Button)sender).DataContext as User);
-            addEditPage.Show();
-            this.Close();
+            addEditPage.ShowDialog();
+            QueryingEntities();
         }
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
             AddEditUsersWindow addEditPage = new AddEditUsersWindow(null!);
-            addEditPage.Show();
-            this.Close();
+            addEditPage.ShowDialog();
+            QueryingEntities();
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
@@ -62,7 +62,7 @@ namespace TravelAgency.Windows.users
                     }
                     MessageBox.Show("Данные удалены");
 
-                    QueryingUsers();
+                    QueryingEntities();
                 }
                 catch (Exception ex)
                 {

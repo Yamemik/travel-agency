@@ -1,14 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Windows;
 using System.Windows.Controls;
-using TravelAgency.Windows.tours;
 
-namespace TravelAgency.Windows.flights
+namespace TravelAgency.Windows.visited
 {
-    public partial class FlightsWindow : Window
+    public partial class VisitedWindow : Window
     {
-        public Flight? selectedRow { get; set; }
-        public FlightsWindow(bool isSelect = false)
+        public VisitedExcursion? selectedRow { get; set; }
+
+        public VisitedWindow(bool isSelect = false)
         {
             InitializeComponent();
 
@@ -20,8 +20,7 @@ namespace TravelAgency.Windows.flights
                 BtnEditColumn.Visibility = Visibility.Hidden;
 
                 BtnAdd.Visibility = Visibility.Hidden;
-                BtnDelete.Visibility = Visibility.Hidden;
-
+                //BtnDelete.Visibility = Visibility.Hidden;
             }
             else
             {
@@ -33,31 +32,30 @@ namespace TravelAgency.Windows.flights
         {
             using (TravelDBContext db = new())
             {
-                IQueryable<Flight>? entity = db.Flights?
-                    .Include(c => c.Airline)
-                    .Include(c => c.DepartureCountry)
-                    .Include(c => c.DestinationCountry);
+                IQueryable<VisitedExcursion>? ent = db.VisitedExcursions?
+                    .Include(c => c.Contract)
+                    .Include(c => c.Excursion);
 
-                DGrid.ItemsSource = entity?.ToList<Flight>();
+                DGrid.ItemsSource = ent?.ToList<VisitedExcursion>();
             }
         }
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-            AddEditToursWindow addEditPage = new AddEditToursWindow(((Button)sender).DataContext as Tour);
-            addEditPage.ShowDialog();
+            //AddEditToursWindow addEditPage = new AddEditToursWindow(((Button)sender).DataContext as Tour);
+            //addEditPage.ShowDialog();
             QueryingEntities();
         }
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            AddEditToursWindow addEditPage = new AddEditToursWindow(null!);
-            addEditPage.ShowDialog();
+            //AddEditToursWindow addEditPage = new AddEditToursWindow(null!);
+            //addEditPage.ShowDialog();
             QueryingEntities();
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-            var rowsForRemoving = DGrid.SelectedItems.Cast<Flight>().ToList();
+            var rowsForRemoving = DGrid.SelectedItems.Cast<VisitedExcursion>().ToList();
             if (MessageBox.Show($"Вы точно хотите удалить следущие {rowsForRemoving.Count()} элемент?", "Внимание",
                 MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
@@ -65,8 +63,8 @@ namespace TravelAgency.Windows.flights
                 {
                     using (TravelDBContext db = new())
                     {
-                        IQueryable<Flight>? ent = db.Flights
-                            .Where(c => c.Id == rowsForRemoving[0].Id);
+                        IQueryable<VisitedExcursion>? ent = db.VisitedExcursions
+                            .Where(c => c.ContractId == rowsForRemoving[0].ContractId);
 
                         if (ent is null)
                         {
@@ -75,7 +73,7 @@ namespace TravelAgency.Windows.flights
                         }
                         else
                         {
-                            db.Flights.RemoveRange(ent);
+                            db.VisitedExcursions.RemoveRange(ent);
                         }
                         int affected = db.SaveChanges();
                     }
@@ -97,7 +95,7 @@ namespace TravelAgency.Windows.flights
 
         private void BtnSelect_Click(object sender, RoutedEventArgs e)
         {
-            selectedRow = (Flight)((Button)sender).DataContext;
+            selectedRow = (VisitedExcursion)((Button)sender).DataContext;
 
             this.Close();
         }

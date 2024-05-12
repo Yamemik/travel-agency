@@ -44,14 +44,14 @@ namespace TravelAgency.Windows
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
             AddEditToursWindow addEditPage = new AddEditToursWindow(((Button)sender).DataContext as Tour);
-            addEditPage.Show();
-            this.Close();
+            addEditPage.ShowDialog();
+            QueryingEntities();
         }
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
             AddEditToursWindow addEditPage = new AddEditToursWindow(null!);
-            addEditPage.Show();
-            this.Close();
+            addEditPage.ShowDialog();
+            QueryingEntities();
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)

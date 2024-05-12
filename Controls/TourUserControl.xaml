@@ -55,7 +55,8 @@
         <TextBlock x:Name="TotalTourPrice" Text="[Стоимость туров]" FontFamily="Comic Sans MS" FontSize="14" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,5,0,0" Grid.Row="1" Width="181" Height="68" Grid.RowSpan="2"></TextBlock>
 
         <DataGrid Grid.Row="2" x:Name="DataGridEx" Background="SlateGray" AutoGenerateColumns="False" CanUserAddRows="False"
-                  AlternatingRowBackground="DarkGray" RowBackground="LightGray" IsReadOnly="True" Width="500" Margin="0,30,0,0">
+                  AlternatingRowBackground="DarkGray" RowBackground="LightGray" IsReadOnly="True" Width="500" Margin="0,30,0,0"
+                  FontFamily="Comic Sans MS" FontWeight="Bold">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Номер" Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="Локация" Binding="{Binding Location}" Width="*"/>

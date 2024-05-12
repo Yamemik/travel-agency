@@ -39,19 +39,23 @@ namespace TravelAgency.Controls
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-            AddEditPageHotel addEditPage = new AddEditPageHotel(((Button)sender).DataContext as Hotel);
-            addEditPage.Show();
+            //AddEditPageHotel addEdit = new AddEditPageHotel(((Button)sender).DataContext as Hotel);
+            //addEdit.ShowDialog();
+
+            QueryingContracts();
         }
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            AddEditPageHotel addEditPage = new AddEditPageHotel(null);
-            addEditPage.Show();;
+            //AddEditPageHotel addEdit = new AddEditPageHotel(null);
+            //addEdit.ShowDialog();
+
+            QueryingContracts();
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-            var hotelsForRemoving = DGridContracts.SelectedItems.Cast<Hotel>().ToList();
-            if (MessageBox.Show($"Вы точно хотите удалить следущие {hotelsForRemoving.Count()} элемент?", "Внимание",
+            var rowsForRemoving = DGridContracts.SelectedItems.Cast<Contract>().ToList();
+            if (MessageBox.Show($"Вы точно хотите удалить следущие {rowsForRemoving.Count()} элемент?", "Внимание",
                 MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 try
@@ -59,17 +63,17 @@ namespace TravelAgency.Controls
                     using (TravelDBContext db = new())
                     {
                         // запрос на получение всех категорий и связанных с ними продуктов
-                        IQueryable<Hotel>? hotels = db.Hotels
-                            .Where(c => c.Id == hotelsForRemoving[0].Id);
+                        IQueryable<Contract>? ent = db.Contracts
+                            .Where(c => c.Id == rowsForRemoving[0].Id);
 
-                        if (hotels is null)
+                        if (ent is null)
                         {
                             MessageBox.Show("No products found to delete.");
                             return;
                         }
                         else
                         {
-                            db.Hotels.RemoveRange(hotels);
+                            db.Contracts.RemoveRange(ent);
                         }
                         int affected = db.SaveChanges();
                     }

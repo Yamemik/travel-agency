@@ -88,8 +88,6 @@ namespace TravelAgency.Windows.tours
                     db.SaveChanges();
                     MessageBox.Show("Информация сохранена!");
 
-                    ToursWindow tourWindow = new ToursWindow();
-                    tourWindow.Show();
                     this.Close();
                 }
                 catch (Exception ex)
@@ -104,8 +102,6 @@ namespace TravelAgency.Windows.tours
             var response = MessageBox.Show("Закрыть?", "Закрыть", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             if (response == MessageBoxResult.Yes)
             {
-                ToursWindow win = new ToursWindow();
-                win.Show();
                 this.Close();
             }
         }
