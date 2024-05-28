@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Input;
+using TravelAgency.Windows.auth;
 
 
 namespace TravelAgency
@@ -86,6 +87,12 @@ namespace TravelAgency
             BG.Children.Clear();
             uc_contract.mama = this;
             BG.Children.Add(uc_settings);
+        }
+
+        private void StackPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            AuthWindow auth = new AuthWindow();
+            auth.ShowDialog();
         }
     }
 }

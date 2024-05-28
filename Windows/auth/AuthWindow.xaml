@@ -1,0 +1,54 @@
+﻿<Window x:Class="TravelAgency.Windows.auth.AuthWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TravelAgency.Windows.auth"
+        mc:Ignorable="d"
+        Title="AuthWindow" Height="220" Width="350" WindowStyle="None">
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily"
+                    Value="Fonts/Roboto-Light.ttf #Roboto"/>
+            <Setter Property="VerticalAlignment"
+                    Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Fonts/Roboto-Light.ttf #Roboto"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Width" Value="200"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="LightGreen"/>
+            <Setter Property="Margin" Value="10,20,10,20"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+    </Window.Resources>
+    <Grid Background="SlateGray">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Логин"/>
+        <TextBlock Text="Пароль" Grid.Row="1"/>
+
+        <TextBox x:Name="log" Grid.Column="1"/>
+        <TextBox x:Name="pass" Grid.Column="1" Grid.Row="1"/>
+
+        <Button Content="OK" x:Name="ok" Grid.Row="2" Click="ok_Click"/>
+        <Button Content="Отмена" x:Name="cancel" Grid.Row="2" Grid.Column="1" Click="cancel_Click"/>
+    </Grid>
+</Window>

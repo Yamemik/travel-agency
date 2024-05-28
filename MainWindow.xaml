@@ -298,7 +298,7 @@
 
                         <!--// Sign Out //-->
                         <ListViewItem HorizontalAlignment="Left" Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter">
-                            <StackPanel Orientation="Horizontal" Width="230">
+                            <StackPanel Orientation="Horizontal" Width="230" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown">
                                 <Image Source="/Resources/Assets/img_signout.png" Stretch="None" Margin="12,0,0,0"/>
                                 <TextBlock Text="Выйти" Margin="25,0,0,0" Style="{StaticResource font_style}"/>
                             </StackPanel>
