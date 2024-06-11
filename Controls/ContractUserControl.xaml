@@ -40,9 +40,9 @@
         <TextBlock Text="Выберите фильтр: " FontFamily="Comic Sans MS" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,0,0" Grid.Row="1" Height="20" Width="196"></TextBlock>
         <ComboBox x:Name="ComboPrice"  FontFamily="Comic Sans MS" FontSize="14" SelectionChanged="ComboPrice_SelectionChanged" Margin="5,30,0,0"
                   Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="183" Height="24">
-            <ComboBoxItem Content="По умолчанию" IsSelected="True"/>
-            <ComboBoxItem Content="По возрастанию"/>
-            <ComboBoxItem Content="По убыванию"/>
+            <ComboBoxItem Name="cm_default" Content="По умолчанию" IsSelected="True"/>
+            <ComboBoxItem Name="cm_abc" Content="По возрастанию"/>
+            <ComboBoxItem Name="cm_cba" Content="По убыванию"/>
         </ComboBox>
 
         <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="206,5,186,0" Grid.Row="1">
