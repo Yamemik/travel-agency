@@ -2,6 +2,8 @@
 using System.Windows;
 using System.Windows.Controls;
 using TravelAgency.Windows;
+using TravelAgency.Windows.contracts;
+using TravelAgency.Windows.countries;
 
 
 namespace TravelAgency.Controls
@@ -137,7 +139,8 @@ namespace TravelAgency.Controls
 
         private void BtnOpen_Click(object sender, RoutedEventArgs e)
         {
-
+            AboutContratWindow addEditPage = new AboutContratWindow(((Button)sender).DataContext as Contract);
+            addEditPage.ShowDialog();            
         }
     }
 }
