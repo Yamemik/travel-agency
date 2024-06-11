@@ -24,15 +24,14 @@ namespace TravelAgency.Controls
             get { return win!; }
         }
 
-        private void QueryingContracts(string sort = "")
+        private void QueryingContracts(string sort = " ")
         {
             using (TravelDBContext db = new())
             {
                 // запрос на получение всех категорий и связанных с ними продуктов
-                IQueryable<Contract>? contracts = db.Contracts
-                    .Include(c => c.Tour)
-                    .Include(c => c.Customers)
-                    .OrderBy(c => c.Id);
+                IQueryable<Contract>? contracts = contracts = db.Contracts
+                        .Include(c => c.Tour)
+                        .Include(c => c.Customers);
 
                 if (sort == "abc")
                 {
@@ -49,7 +48,8 @@ namespace TravelAgency.Controls
                         .OrderByDescending(c => c.Tour.CompanyServiceCost);
                 }
 
-                DGridContracts.ItemsSource = contracts.ToList<Contract>();
+                //DGridContracts.ItemsSource.D;
+                DGridContracts.ItemsSource = contracts.ToList();
             }
         }
 
@@ -120,19 +120,14 @@ namespace TravelAgency.Controls
 
         private void ComboPrice_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (ComboPrice.SelectedIndex == 0)
-            {
-                QueryingContracts();
-            }
             if (ComboPrice.SelectedIndex == 1)
             {
                 QueryingContracts("abc");
             }
-            else
+            if (ComboPrice.SelectedIndex == 2)
             {
                 QueryingContracts("cba");
             }
-            UpdateTours();
         }
 
         private void Btn1_Click(object sender, RoutedEventArgs e)
