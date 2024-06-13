@@ -94,5 +94,12 @@ namespace TravelAgency
             AuthWindow auth = new AuthWindow();
             auth.ShowDialog();
         }
+
+        private void StackPanel_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            BG.Children.Clear();
+            uc_contract.mama = this;
+            BG.Children.Add(uc_reports);
+        }
     }
 }

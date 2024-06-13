@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TravelAgency.Windows.contracts"
         mc:Ignorable="d"
-        Title="AboutContratWindow" Height="450" Width="800">
+        Title="AboutContratWindow" Height="450" Width="600">
     <Window.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -74,19 +74,33 @@
             <StackPanel>
                 <WrapPanel>
                     <TextBlock Text="Дата заключения: "/>
-                    <TextBlock x:Name="date" Text="value"/>
+                    <TextBlock x:Name="txt_date" Text="value"/>
                 </WrapPanel>
                 <WrapPanel>
-                    <TextBlock Text="fsdf"/>
-                    <TextBlock x:Name="tour" Text="value"/>
+                    <TextBlock Text="Номер тура: "/>
+                    <TextBlock x:Name="txt_tour" Text="value"/>
                 </WrapPanel>
                 <WrapPanel>
-                    <TextBlock Text="fsdf"/>
-                    <TextBlock x:Name="tttt" Text="value"/>
+                    <TextBlock Text="С "/>
+                    <TextBlock x:Name="txt_date_start" Text="value"/>
+                    <TextBlock Text=" По "/>
+                    <TextBlock x:Name="txt_date_finish" Text="value"/>
+                </WrapPanel>
+                <WrapPanel>
+                    <TextBlock Text="Страна: "/>
+                    <TextBlock x:Name="txt_country" Text="value"/>
+                </WrapPanel>
+                <WrapPanel>
+                    <TextBlock Text="Отель: "/>
+                    <TextBlock x:Name="txt_hotel" Text="value"/>
+                </WrapPanel>
+                <WrapPanel>
+                    <TextBlock Text="Стоимость: "/>
+                    <TextBlock x:Name="txt_cost" Text="value"/>
                 </WrapPanel>
             </StackPanel>
             <StackPanel Margin="100,0,0,0">
-                <TextBlock Text="Заказчики" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                <TextBlock Text="Клиенты" HorizontalAlignment="Center" Margin="0,0,0,10"/>
                 <DataGrid x:Name="DGridCustomer" AutoGenerateColumns="False" IsReadOnly="True" >
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Имя" Binding="{Binding Name}"/>

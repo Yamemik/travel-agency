@@ -45,13 +45,6 @@
             <ComboBoxItem Content="По убыванию"/>
         </ComboBox>
 
-        <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="206,5,186,0" Grid.Row="1">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Выберите дату: " Width="175" TextAlignment="Right" FontFamily="Comic Sans MS" FontSize="14"/>
-                <ComboBox Width="225" x:Name="ComboType" SelectionChanged="ComboType_SelectionChanged" DisplayMemberPath="Name" FontFamily="Comic Sans MS" FontSize="14"/>
-            </StackPanel>
-        </WrapPanel>
-
         <DataGrid Grid.Row="2" x:Name="DGridContracts" Background="SlateGray" AutoGenerateColumns="False" CanUserAddRows="False"
                   AlternatingRowBackground="DarkGray" RowBackground="LightGray" IsReadOnly="True" Width="500" Margin="0,20,0,0"
                   FontFamily="Comic Sans MS" FontWeight="Bold">

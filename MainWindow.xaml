@@ -152,6 +152,7 @@
                 <uc:ContractUserControl x:Name="uc_contract"/>
                 <uc:MainUserControl x:Name="uc_main"/>
                 <uc:SettingsControl x:Name="uc_settings"/>
+                <uc:ReportUserControl x:Name="uc_reports"/>
             </Grid>            
 
             <!--// Navigation Panel //-->
@@ -274,7 +275,7 @@
 
                         <!--// Report //-->
                         <ListViewItem HorizontalAlignment="Left" Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter">
-                            <StackPanel Orientation="Horizontal" Width="230">
+                            <StackPanel Orientation="Horizontal" Width="230" PreviewMouseLeftButtonDown="StackPanel_PreviewMouseLeftButtonDown">
                                 <Image Source="/Resources/Assets/img_report.png" Stretch="UniformToFill" Margin="2,0,0,0"/>
                                 <TextBlock Text="Аналитика" Margin="23,0,0,0" Style="{StaticResource font_style}"/>
                             </StackPanel>
