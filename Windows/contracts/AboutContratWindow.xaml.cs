@@ -43,7 +43,6 @@ namespace TravelAgency.Windows.contracts
 
                 // table
                 DGridCustomer.ItemsSource = contract.Customers.ToList();
-
             }
         }
 
@@ -65,7 +64,6 @@ namespace TravelAgency.Windows.contracts
 
                 return country is null ? "" : country.Name;
             }
-
         }
 
         private string GetHotel(int id) 
@@ -76,7 +74,6 @@ namespace TravelAgency.Windows.contracts
 
                 return hotel is null ? "" : hotel.Name;
             }
-
         }
 
         private Tour  GetTour(int id) 
@@ -87,7 +84,6 @@ namespace TravelAgency.Windows.contracts
 
                 return tour;
             }
-
         }
     }
 }
