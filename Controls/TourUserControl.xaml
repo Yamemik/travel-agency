@@ -30,12 +30,12 @@
         </Grid.RowDefinitions>
 
         <Grid Background="SlateGray"/>
-        <TextBlock Text="Экскурсии" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" FontFamily="Comic Sans MS" FontSize="24"
-                   Width="200" Height="32"/>
+        <TextBlock Text="Экскурсии" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" FontFamily="Comic Sans MS" FontSize="36"
+                   Width="200" Height="50"/>
 
         <DataGrid Grid.Row="2" x:Name="DataGridEx" Background="SlateGray" AutoGenerateColumns="False" CanUserAddRows="False"
-                  AlternatingRowBackground="DarkGray" RowBackground="LightGray" IsReadOnly="True" Width="500" Margin="0,30,0,0"
-                  FontFamily="Comic Sans MS" FontWeight="Bold">
+                  AlternatingRowBackground="DarkGray" RowBackground="LightGray" IsReadOnly="True" Margin="0,30,0,0"
+                  FontFamily="Comic Sans MS" FontSize="29">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Номер" Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="Локация" Binding="{Binding Location}" Width="*"/>

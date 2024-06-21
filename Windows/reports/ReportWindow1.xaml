@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TravelAgency.Windows.reports"
         mc:Ignorable="d"
-        Title="ReportWindow1" Height="450" Width="800">
+        Title="Отчет по клиентам" Height="450" Width="800">
     <StackPanel Orientation="Vertical">
         <ScrollViewer>
             <Grid Height="489">

@@ -7,7 +7,7 @@ namespace TravelAgency.Windows
 {
     public partial class ToursWindow : Window
     {
-        public Flight? selectedRow { get; set; }
+        public Tour? selectedRow { get; set; }
 
         public ToursWindow(bool isSelect = false)
         {
@@ -96,7 +96,7 @@ namespace TravelAgency.Windows
 
         private void BtnSelect_Click(object sender, RoutedEventArgs e)
         {
-            selectedRow = (Flight)((Button)sender).DataContext;
+            selectedRow = (Tour)((Button)sender).DataContext;
 
             this.Close();
         }

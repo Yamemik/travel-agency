@@ -19,7 +19,7 @@ namespace TravelAgency.Windows.visited
                 BtnSelectColumn.Visibility = Visibility.Visible;
                 BtnEditColumn.Visibility = Visibility.Hidden;
 
-                BtnAdd.Visibility = Visibility.Hidden;
+                //BtnAdd.Visibility = Visibility.Hidden;
                 //BtnDelete.Visibility = Visibility.Hidden;
             }
             else

@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using TravelAgency.Windows.reports;
+using TravelAgency.Windows.visited;
 
 namespace TravelAgency.Controls
 {
@@ -31,9 +32,10 @@ namespace TravelAgency.Controls
             }
         }
 
-        private void BtnHotels_Click(object sender, RoutedEventArgs e)
+        private void BtnVisited_Click(object sender, RoutedEventArgs e)
         {
-
+            VisitedWindowReport report = new VisitedWindowReport();
+            report.ShowDialog();
         }
     }
 }

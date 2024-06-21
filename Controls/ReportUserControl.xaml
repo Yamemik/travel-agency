@@ -23,11 +23,11 @@
         <Style TargetType="Button">
             <Setter Property="Background" Value="#587D71"/>
             <Setter Property="FontFamily" Value="Comic Sans MS"/>
-            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontSize" Value="29"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="Height" Value="32"/>
-            <Setter Property="Width" Value="220"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Width" Value="350"/>
             <Setter Property="Margin" Value="0,10,10,10"/>
         </Style>
     </UserControl.Resources>
@@ -44,18 +44,18 @@
 
         <Grid Background="SlateGray" Grid.ColumnSpan="2"/>
 
-        <TextBlock Text="Отчётность" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" FontFamily="Comic Sans MS" FontSize="24"
-                   Width="200" Height="32" Grid.ColumnSpan="2"/>
+        <TextBlock Text="Отчётность" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" FontFamily="Comic Sans MS" FontSize="36"
+                   Width="200" Height="50" Grid.ColumnSpan="2"/>
 
         <Grid Background="SlateGray" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="0,10,0,0"/>
 
         <StackPanel Grid.Row="1" Margin="0,20,0,0">
-            <ComboBox x:Name="cm_customer" MaxWidth="200" SelectedValuePath="Id" DisplayMemberPath="Surname"/>
+            <ComboBox x:Name="cm_customer" MaxWidth="200" SelectedValuePath="Id" DisplayMemberPath="Surname" Width="300" Height="40" FontSize="25"/>
             <Button x:Name="BtnTours" Content="Отчет по клиентам" ToolTip="Перейти к отчету" Click="BtnCustomer_Click"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="1" Margin="0,20,0,0">
-            <Button x:Name="BtnHotels" Content="Отчет" ToolTip="Перейти к очету" Click="BtnHotels_Click"/>
+            <Button Content="Отчет по экскурсиям" ToolTip="Перейти к очету" Click="BtnVisited_Click"/>
         </StackPanel>
 
     </Grid>

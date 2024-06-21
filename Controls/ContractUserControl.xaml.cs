@@ -57,15 +57,15 @@ namespace TravelAgency.Controls
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-            //AddEditPageHotel addEdit = new AddEditPageHotel(((Button)sender).DataContext as Hotel);
-            //addEdit.ShowDialog();
+            AddEditContractWindow win = new AddEditContractWindow(((Button)sender).DataContext as Contract);
+            win.ShowDialog();
 
             QueryingContracts();
         }
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            //AddEditPageHotel addEdit = new AddEditPageHotel(null);
-            //addEdit.ShowDialog();
+            AddEditContractWindow win = new AddEditContractWindow(null);
+            win.ShowDialog();
 
             QueryingContracts();
         }

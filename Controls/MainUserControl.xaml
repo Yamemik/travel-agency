@@ -11,6 +11,7 @@
         <!-- Styles -->
         <Style TargetType="TextBlock">
             <Setter Property="Margin" Value="5"/>
+            <Setter Property="FontSize" Value="25"/>
         </Style>
         <Style TargetType="Border">
             <Setter Property="BorderBrush" Value="Black"/>
@@ -36,7 +37,7 @@
         <!-- News Block -->
         <Border Grid.Column="0">
             <StackPanel>
-                <TextBlock Text="Последние Новости" FontWeight="Bold" FontSize="16"/>
+                <TextBlock Text="Последние Новости" FontWeight="Bold" FontSize="39"/>
                 <TextBlock Text="- Туроператоры вновь предлагают туры на Кипр на стыковочных рейсах"/>
                 <TextBlock Text="- Аэропорт Элиста откроется для полетов гражданской авиации"/>
                 <TextBlock Text="- Отель «Аква Вилла» под Туапсе охватило огнем после громкого хлопка"/>
