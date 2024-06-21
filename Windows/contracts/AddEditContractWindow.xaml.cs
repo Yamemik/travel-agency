@@ -35,6 +35,7 @@ namespace TravelAgency.Windows.contracts
                 {
                     if (_currentData.Id == 0)
                     {
+                        _currentData.DateOfConclusion = DateOnly.FromDateTime(dPstartDate.SelectedDate.Value);
                         db.Contracts.Add(_currentData);
                     }
                     else
@@ -80,6 +81,10 @@ namespace TravelAgency.Windows.contracts
             {
                 _currentData.Tour = null!;
                 _currentData.TourId = select.Id;
+
+                DataContext = _currentData;
+
+                txtTour.Text = select.Id.ToString();
             }
         }
     }
