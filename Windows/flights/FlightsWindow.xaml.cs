@@ -44,13 +44,13 @@ namespace TravelAgency.Windows.flights
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-            AddEditToursWindow addEditPage = new AddEditToursWindow(((Button)sender).DataContext as Tour);
+            AddEditFlyWindow addEditPage = new AddEditFlyWindow(((Button)sender).DataContext as Flight);
             addEditPage.ShowDialog();
             QueryingEntities();
         }
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            AddEditToursWindow addEditPage = new AddEditToursWindow(null!);
+            AddEditFlyWindow addEditPage = new AddEditFlyWindow(null!);
             addEditPage.ShowDialog();
             QueryingEntities();
         }

@@ -33,7 +33,10 @@
         <TextBlock Text="Экскурсии" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" FontFamily="Comic Sans MS" FontSize="36"
                    Width="200" Height="50"/>
 
-        <TextBox x:Name="county_name" Grid.Row="1" Margin="10" MaxWidth="300" MinWidth="200" TextChanged="TboxSearch_TextChanged" HorizontalAlignment="Left"/>
+        <WrapPanel Grid.Row="1">
+            <TextBlock Text="Введите название страны"/>
+            <TextBox FontSize="20" x:Name="county_name"  Margin="10" MaxWidth="300" MinWidth="200" TextChanged="TboxSearch_TextChanged" HorizontalAlignment="Left" Height="25"/>
+        </WrapPanel>
 
         <DataGrid Grid.Row="2" x:Name="DataGridEx" Background="SlateGray" AutoGenerateColumns="False" CanUserAddRows="False"
                   AlternatingRowBackground="DarkGray" RowBackground="LightGray" IsReadOnly="True" Margin="0,30,0,0"

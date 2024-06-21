@@ -1,0 +1,94 @@
+﻿<Window x:Class="TravelAgency.Windows.flights.AddEditFlyWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TravelAgency.Windows.flights"
+        mc:Ignorable="d"
+        Title="AddEditFlyWindow" Height="450" Width="800" WindowStyle="None">
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="0,20,0,0"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="0,20,0,0"/>
+            <Setter Property="MinWidth" Value="300"/>
+            <Setter Property="MinWidth" Value="300"/>
+        </Style>
+        <Style TargetType="DatePicker">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="0,20,0,0"/>
+            <Setter Property="MinWidth" Value="300"/>
+            <Setter Property="MinWidth" Value="300"/>
+            <Setter Property="Height" Value="22"/>
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="0,20,0,0"/>
+            <Setter Property="MinWidth" Value="300"/>
+            <Setter Property="Height" Value="22"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="MinWidth" Value="100"/>
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Background" Value="#bae3e8"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="0,0,-0.4,0.4">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="83*"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="0*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Background="#bae3e8" Margin="0,0,0.6,0" Grid.ColumnSpan="2"/>
+
+        <StackPanel Grid.Row="1" Margin="0,0,15,0">
+            <TextBlock Text="Авиакомпания"/>
+            <TextBlock Text="Стоимость"/>
+            <TextBlock Text="Страна отправления"/>
+            <TextBlock Text="Страна назначения"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <TextBox x:Name="txtAir" Text="{Binding Airline.Name}" IsReadOnly="True" MouseDoubleClick="CMHotels_MouseLeftButtonUp"/>
+            <TextBox x:Name="CompanyServiceCost" Text="{Binding CustomerPrice}"/>
+            <TextBox x:Name="txtDepartureCountry"  Text="{Binding DepartureCountry.Name}" IsReadOnly="True" MouseDoubleClick="CMCountry_MouseDoubleClick"/>
+            <TextBox x:Name="txtDestinationCountry" Text="{Binding DestinationCountry.Name}" IsReadOnly="True" MouseDoubleClick="DeparFly_MouseDoubleClick"/>
+        </StackPanel>
+
+        <TextBlock Text="Добавление / Редактирование" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Comic Sans MS"
+                   FontSize="24" Width="500" Height="37" Grid.ColumnSpan="2" HorizontalAlignment="Center"/>
+
+        <Button x:Name="BtnBack" Content="Назад" ToolTip="Вернуться к форме пользователей" Grid.Row="2"
+                Click="BtnBack_Click" Grid.Column="1"/>
+
+        <Button Content="Сохранить" Grid.Row="2" ToolTip="Сохранить введённые данные"
+                Name="BtnSave" Click="BtnSave_Click"/>
+
+        <Grid Background="#445c93" Grid.Row="6" Margin="0,0.4,0.6,0.4" Grid.ColumnSpan="2"/>
+    </Grid>
+</Window>
